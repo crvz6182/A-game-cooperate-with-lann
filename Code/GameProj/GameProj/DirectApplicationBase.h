@@ -1,5 +1,4 @@
 #pragma once
-#include "HIDInput.h"
 #include "Timer.h"
 
 using Size1D = int;
@@ -68,7 +67,6 @@ protected:
 	HINSTANCE mApplicationInstance;		//程序实例
 	HWND			mMainWIndowHandler;		//窗体句柄
 	Timer			mTimer;								//计时器
-	Size2D			mWindowSize;						//窗体大小
-	HIDInput*	mInput;								//输入
+	Size2D			mWindowSize;						//输入
 };
 

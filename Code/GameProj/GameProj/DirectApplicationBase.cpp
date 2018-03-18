@@ -218,7 +218,7 @@ void DirectApplicationBase::Pause()
 
 void DirectApplicationBase::Resume()
 {
-	mTimer.ResumeTime();
+	mTimer.ResumeTimer();
 }
 
 void DirectApplicationBase::Windowize()

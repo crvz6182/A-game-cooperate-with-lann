@@ -11,6 +11,7 @@ using TimeSlotInSecond = float;
 //以Count计时的时间段
 using TimeSlotInCount = time_t;
 
+//计时器
 class Timer
 {
 public:
@@ -22,12 +23,12 @@ public:
 	//暂停计时器
 	void PauseTimer();
 	//恢复计时器
-	void ResumeTime();
+	void ResumeTimer();
 	//计时，一般在每帧调用
 	void Tick();
 	//获取总有效计时时长（秒）
 	TimeSlotInSecond GetTotalValidTime() const;
-	//获取两次有效计时的时间差
+	//获取两次有效计时的时间差（秒）
 	TimeSlotInSecond GetDeltaTime() const;
 private:
 	//获取当前时间点（Count）

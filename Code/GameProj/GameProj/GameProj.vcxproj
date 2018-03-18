@@ -149,7 +149,6 @@
   <ItemGroup>
     <ClInclude Include="DirectApplicationBase.h" />
     <ClInclude Include="GameProj.h" />
-    <ClInclude Include="HIDInput.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Timer.h" />
@@ -157,7 +156,6 @@
   <ItemGroup>
     <ClCompile Include="DirectApplicationBase.cpp" />
     <ClCompile Include="GameProj.cpp" />
-    <ClCompile Include="HIDInput.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

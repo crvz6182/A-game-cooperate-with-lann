@@ -37,7 +37,7 @@ void Timer::PauseTimer()
 	mPauseCount = GetCurrentCount();
 }
 
-void Timer::ResumeTime()
+void Timer::ResumeTimer()
 {
 	if (!mPausing) {
 		return;
