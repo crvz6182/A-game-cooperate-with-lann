@@ -24,10 +24,13 @@
     <ClInclude Include="GameProj.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="DirectApplicationBase.h">
+    <ClInclude Include="Timer.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
+    <ClInclude Include="WindowApplicationBase.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectApplicationBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,10 +41,13 @@
     <ClCompile Include="GameProj.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="DirectApplicationBase.cpp">
+    <ClCompile Include="Timer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp">
+    <ClCompile Include="WindowApplicationBase.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectApplicationBase.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

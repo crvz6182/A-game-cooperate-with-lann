@@ -1,6 +1,4 @@
-﻿  stdafx.cpp
-  Timer.cpp
-  HIDInput.cpp
+﻿  WindowApplicationBase.cpp
   GameProj.cpp
   DirectApplicationBase.cpp
   正在生成代码...
