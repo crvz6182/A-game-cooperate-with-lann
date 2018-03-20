@@ -4,7 +4,7 @@ using Size1D = int;
 
 struct Size2D
 {
-	Size1D Weight;
+	Size1D Width;
 	Size1D Height;
 };
 
@@ -36,7 +36,7 @@ public:
 	 *******************/
 
 	//初始化窗体
-	virtual bool Initialization();
+	virtual bool Initialize();
 
 	//当窗体大小被更改时会调用此函数
 	virtual void OnResize();

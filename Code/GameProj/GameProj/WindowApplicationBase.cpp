@@ -15,7 +15,7 @@ WindowApplicationBase::WindowApplicationBase(HINSTANCE instance):
 	mApplicationInstance(instance),
 	mMainWIndowHandler(0)
 {
-	mWindowSize.Weight = 800;
+	mWindowSize.Width = 800;
 	mWindowSize.Height = 600;
 
 	globalDirectApplicationForTrasport = this;
@@ -53,7 +53,7 @@ void WindowApplicationBase::Quit()
 	PostQuitMessage(0);
 }
 
-bool WindowApplicationBase::Initialization()
+bool WindowApplicationBase::Initialize()
 {
 	return InitializeMainWindow();
 }
@@ -82,7 +82,7 @@ LRESULT WindowApplicationBase::MessageProcess(HWND hWnd, UINT msg, WPARAM wParam
 		//拉动窗体边缘由WM_ENTERSIZEMOVE处理
 	case WM_SIZE:
 		//保存窗体大小
-		mWindowSize.Weight = LOWORD(lParam);
+		mWindowSize.Width = LOWORD(lParam);
 		mWindowSize.Height = HIWORD(lParam);
 		switch (wParam)
 		{
@@ -174,12 +174,12 @@ bool WindowApplicationBase::InitializeMainWindow()
 		return false;
 	}
 
-	RECT rect = { 0, 0, mWindowSize.Weight, mWindowSize.Height };
+	RECT rect = { 0, 0, mWindowSize.Width, mWindowSize.Height };
 	AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
 	mMainWIndowHandler = CreateWindow(L"D3DApp", L"DirectApplication",
 		WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
-		mWindowSize.Weight, mWindowSize.Height, 0, 0, mApplicationInstance, 0);
+		mWindowSize.Width, mWindowSize.Height, 0, 0, mApplicationInstance, 0);
 
 	if (!mMainWIndowHandler) {
 		/*DWORD e = GetLastError();
@@ -206,12 +206,17 @@ void WindowApplicationBase::Resume()
 
 void WindowApplicationBase::Windowize()
 {
+	Resume();
+	OnResize();
 }
 
 void WindowApplicationBase::Minimize()
 {
+	Pause();
 }
 
 void WindowApplicationBase::Maximize()
 {
+	Resume();
+	OnResize();
 }
