@@ -4,7 +4,7 @@
 
 
 String::String() {
-	content = L"";
+	mContent = L"";
 }
 
 String::~String() {
@@ -12,46 +12,46 @@ String::~String() {
 }
 
 String::String(const wchar_t* cStr){
-	content = cStr;
+	mContent = cStr;
 }
 
 String::String(const wchar_t& wc) {
-	wchar_t temp[2];
-	temp[0] = wc;
-	temp[1] = L'\0';
-	content = temp;
+	wchar_t tStr[2];
+	tStr[0] = wc;
+	tStr[1] = L'\0';
+	mContent = tStr;
 }
 
 String::String(const int& i) {
-	std::wostringstream oss;
-	oss << i;
-	content = oss.str();
+	std::wostringstream tOss;
+	tOss << i;
+	mContent = tOss.str();
 }
 
 String::String(const float& f) {
-	std::wostringstream oss;
-	oss << f;
-	content = oss.str();
+	std::wostringstream tOss;
+	tOss << f;
+	mContent = tOss.str();
 }
 
 String::String(const String& s) {
-	content = s.content;
+	mContent = s.mContent;
 }
 
 String String::operator+(const String& b) {
-	String temp;
-	temp.content = content + b.content;
-	return temp;
+	String tStr;
+	tStr.mContent = mContent + b.mContent;
+	return tStr;
 }
 
 String String::operator*(const int& b) {
-	String temp;
+	String tStr;
 	for (int i = 0; i < b; i++) {
-		temp.content += content;
+		tStr.mContent += mContent;
 	}
-	return temp;
+	return tStr;
 }
 
 bool String::operator==(const String& b) {
-	return content.compare(b.content) == 0;
+	return mContent.compare(b.mContent) == 0;
 }
