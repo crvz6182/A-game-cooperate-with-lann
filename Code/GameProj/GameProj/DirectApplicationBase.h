@@ -38,8 +38,11 @@ public:
 	virtual void Resume() override;
 
 protected:
-	//初始化Direct
+	//初始化Direct3D
 	bool InitializeDirect();
+
+	//初始化Direct2D
+	bool InitializeDirect2D();
 
 	//获取MSAA质量等级
 	//只会获取一次
@@ -60,5 +63,12 @@ private:
 	ID3D11RenderTargetView*		mRenderTargetView;		//渲染对象视图
 	ID3D11DepthStencilView*		mDepthStencilView;		//深度模板视图
 	ID3D11Texture2D*					mDepthStencilBuffer;		//深度模板缓冲区
+
+	ID2D1Factory*							mD2DFactory;					//D2D工厂模式接口
+	ID2D1RenderTarget*				mD2DBackBufferRenderTarget;				//	D2D缓冲区渲染目标
+
+	IDWriteFactory*						mDWriteFactory;				//D2D书写 工厂模式接口
+	IDWriteTextFormat*				mWriteTextFormat;			//D2D书写 写字格式
+	ID2D1SolidColorBrush*			mSolidBrush;					//D2D书写 笔刷
 };
 

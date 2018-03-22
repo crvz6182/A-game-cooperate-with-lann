@@ -149,7 +149,6 @@
   <ItemGroup>
     <ClInclude Include="DirectApplicationBase.h" />
     <ClInclude Include="DirectUtility.h" />
-    <ClInclude Include="Math.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="WindowApplicationBase.h" />
     <ClInclude Include="GameProj.h" />
@@ -160,7 +159,6 @@
   <ItemGroup>
     <ClCompile Include="DirectApplicationBase.cpp" />
     <ClCompile Include="DirectUtility.cpp" />
-    <ClCompile Include="Math.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="WindowApplicationBase.cpp" />
     <ClCompile Include="GameProj.cpp" />

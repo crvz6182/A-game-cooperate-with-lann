@@ -1,9 +1,14 @@
 #pragma once
 
 #include <d3d11.h>
+#include <d2d1.h>
+#include <dwrite.h>
 #include <assert.h>
+#include "String.h"
 
 #pragma comment(lib, "d3d11.lib")
+#pragma comment(lib, "d2d1.lib")
+#pragma comment(lib, "dwrite.lib")
 
 //ÊÍ·ÅDirect×é¼þ
 #define ReleaseCOM(x) {if(x){x->Release();}x=nullptr;}
