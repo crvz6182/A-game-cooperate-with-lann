@@ -1,4 +1,4 @@
 # A-game-cooperate-with-lann
 
-A game developing
-Two students dreaming
+A game developing,
+Two students dreaming.
