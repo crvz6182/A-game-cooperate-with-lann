@@ -93,17 +93,13 @@ void DirectApplicationBase::Draw()
 {
 
 	//指定背景色清空渲染对象视图
-	static float r = 0.0f;
-	static float g = 0.0f;
-	static float b = 0.0f;
+	float r = 0.0f;
+	float g = 0.0f;
+	float b = 0.0f;
 
-	r += 0.07f;
-	g += 0.03f;
-	b += 0.09f;
-
-	if (r > 1.0f) { r -= 1; }
-	if (g > 1.0f) { g -= 1; }
-	if (b > 1.0f) { b -= 1; }
+	r += 0.8f;
+	g += 0.6f;
+	b += 0.4f;
 
 	float bgColor[] = { r, g, b, 1.0f };
 	mImmediateContext->ClearRenderTargetView(mRenderTargetView, bgColor);
@@ -117,7 +113,7 @@ void DirectApplicationBase::Draw()
 			0., 0., 40., 20.
 		);
 
-		mD2DBackBufferRenderTarget->DrawText(String((int)(1 / mTimer.GetDeltaTime())), 3, mWriteTextFormat, rectRegion, mSolidBrush);
+		mD2DBackBufferRenderTarget->DrawText(String((int)(1 / mTimer.GetDeltaTime())), 4, mWriteTextFormat, rectRegion, mSolidBrush);
 		
 		//结束绘图
 		mD2DBackBufferRenderTarget->EndDraw();

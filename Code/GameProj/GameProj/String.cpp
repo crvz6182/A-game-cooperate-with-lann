@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "String.h"
-#include <sstream>
+
 
 
 String::String() {
@@ -53,13 +53,15 @@ String::String(const String& s) {
 	mContent = s.mContent;
 }
 
-String String::operator+(const String& rhs) {
+const String String::operator+(const String& rhs) const
+{
 	String tStr;
 	tStr.mContent = mContent + rhs.mContent;
 	return tStr;
 }
 
-String String::operator*(const int& rhs) {
+const String String::operator*(const int& rhs) const
+{
 	String tStr;
 	for (int i = 0; i < rhs; i++) {
 		tStr.mContent += mContent;
@@ -67,11 +69,24 @@ String String::operator*(const int& rhs) {
 	return tStr;
 }
 
-bool String::operator==(const String& rhs) {
+const bool String::operator==(const String& rhs) const
+{
 	return mContent.compare(rhs.mContent) == 0;
 }
 
-String::operator const WCHAR*()
+const Count String::GetLength() const
+{
+	return mContent.length();
+}
+
+String::operator const WCHAR* ()const
 {
 	return mContent.c_str();
+}
+
+String::operator const std::string ()const
+{
+	std::ostringstream tOss;
+	tOss << mContent.c_str();
+	return tOss.str();
 }

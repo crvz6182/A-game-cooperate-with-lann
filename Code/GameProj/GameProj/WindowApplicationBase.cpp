@@ -129,25 +129,31 @@ LRESULT WindowApplicationBase::MessageProcess(HWND hWnd, UINT msg, WPARAM wParam
 		((MINMAXINFO*)lParam)->ptMinTrackSize = { 800, 600 };
 		return 0;
 
+		//有按键被按下
+	case WM_KEYDOWN:
+
+		//按键抬起
+	case WM_KEYUP:
+
 		//鼠标消息转发到成员函数（虚函数）
 		//供用户自定义覆写
 	case WM_LBUTTONDOWN:
+		return 0;
 	case WM_MBUTTONDOWN:
+		return 0;
 	case WM_RBUTTONDOWN:
-		//OnMouseDown(wParam, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
 		return 0;
 
 	case WM_LBUTTONUP:
+		return 0;
 	case WM_MBUTTONUP:
+		return 0;
 	case WM_RBUTTONUP:
-		//OnMouseUp(wParam, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
 		return 0;
 
 	case WM_MOUSEMOVE:
-		//OnMouseMove(wParam, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
 		return 0;
 	}
-
 	return DefWindowProc(hWnd, msg, wParam, lParam);
 }
 
