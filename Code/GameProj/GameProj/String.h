@@ -1,6 +1,9 @@
 #pragma once
 #include <sstream>
 #include <string>
+#include <locale.h>
+
+using Count = unsigned int;
 
 class String{
 public:
@@ -36,14 +39,17 @@ public:
 	~String();
 
 	//字符串合并
-	String operator+(const String& rhs);
+	const String operator+(const String& rhs) const;
 	//字符串自复制
-	String operator*(const int& rhs);
+	const String operator*(const int& rhs) const;
 	//字符串比较
-	bool operator==(const String& rhs);
+	const bool operator==(const String& rhs) const;
+	//返回字符串长度
+	const Count GetLength() const;
 
 	//提供隐式类型转换
-	operator const WCHAR*();
+	operator const WCHAR*() const;
+	operator const std::string() const;
 
 private:
 

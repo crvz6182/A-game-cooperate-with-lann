@@ -1,4 +1,5 @@
 #pragma once
+#include <windowsx.h>
 #include "String.h"
 
 using Size1D = int;
