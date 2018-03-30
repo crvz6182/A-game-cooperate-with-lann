@@ -50,6 +50,7 @@ public:
 	//提供隐式类型转换
 	operator const WCHAR*() const;
 	operator const std::string() const;
+	operator const int() const;
 
 private:
 

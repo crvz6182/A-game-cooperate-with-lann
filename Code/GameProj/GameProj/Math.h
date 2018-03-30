@@ -1,10 +1,41 @@
 #pragma once
+#include <vector>
+#include <map>
+
+using Index = unsigned int;
+using Count = unsigned int;
+using Size1D = int;
+struct Size2D
+{
+	Size1D Width;
+	Size1D Height;
+};
 
 using Unit = float;
-
 struct Point2D {
 	Unit x;
 	Unit y;
+};
+
+template<typename T>
+class Array
+{
+public:
+	void push(T);	//Ìí¼ÓÔªËØ
+private:
+	std::vector<T> mVector;
+};
+
+template<typename T>
+void Array<T>::push(T member) {
+	mVector.push_back(member);
+}
+
+template<typename TKey, typename TValue>
+class Dictionary
+{
+private:
+	std::map<TKey, TValue> mMap;
 };
 
 class Math {
