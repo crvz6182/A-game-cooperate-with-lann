@@ -322,3 +322,6 @@ ASALocalRun/
 
 # NVidia Nsight GPU debugger configuration file
 *.nvuser
+*.db
+Code/GameProj/.vs/GameProj/v15/Browse.VC.db
+Code/GameProj/.vs/GameProj/v15/.suo
