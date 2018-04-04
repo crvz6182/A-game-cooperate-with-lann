@@ -90,8 +90,3 @@ String::operator const std::string ()const
 	tOss << mContent.c_str();
 	return tOss.str();
 }
-
-String::operator const int()const
-{
-	return std::stoi(mContent);
-}

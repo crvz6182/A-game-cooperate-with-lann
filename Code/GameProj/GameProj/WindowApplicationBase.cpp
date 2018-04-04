@@ -128,31 +128,6 @@ LRESULT WindowApplicationBase::MessageProcess(HWND hWnd, UINT msg, WPARAM wParam
 	case WM_GETMINMAXINFO:
 		((MINMAXINFO*)lParam)->ptMinTrackSize = { 800, 600 };
 		return 0;
-
-		//有按键被按下
-	case WM_KEYDOWN:
-
-		//按键抬起
-	case WM_KEYUP:
-
-		//鼠标消息转发到成员函数（虚函数）
-		//供用户自定义覆写
-	case WM_LBUTTONDOWN:
-		return 0;
-	case WM_MBUTTONDOWN:
-		return 0;
-	case WM_RBUTTONDOWN:
-		return 0;
-
-	case WM_LBUTTONUP:
-		return 0;
-	case WM_MBUTTONUP:
-		return 0;
-	case WM_RBUTTONUP:
-		return 0;
-
-	case WM_MOUSEMOVE:
-		return 0;
 	}
 	return DefWindowProc(hWnd, msg, wParam, lParam);
 }
@@ -180,12 +155,12 @@ bool WindowApplicationBase::InitializeMainWindow()
 		return false;
 	}
 
-	RECT rect = { 0, 0, mWindowSize.Width, mWindowSize.Height };
+	RECT rect = { 0, 0, (LONG)mWindowSize.Width, (LONG)mWindowSize.Height };
 	AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
 	mMainWIndowHandler = CreateWindow(L"D3DApp", L"DirectApplication",
 		WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
-		mWindowSize.Width, mWindowSize.Height, 0, 0, mApplicationInstance, 0);
+		(UINT)mWindowSize.Width, (UINT)mWindowSize.Height, 0, 0, mApplicationInstance, 0);
 
 	if (!mMainWIndowHandler) {
 		/*DWORD e = GetLastError();
