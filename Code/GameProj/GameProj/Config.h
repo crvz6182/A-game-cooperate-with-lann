@@ -62,7 +62,7 @@ public:
 
 private:
 	//设置的临时值
-	int mResolution[2];
+	Size2D mResolution;
 	int mRefreshRate;
 	int mAntiAliasLevel;
 	FullScreenSetting mIsFullScreen;

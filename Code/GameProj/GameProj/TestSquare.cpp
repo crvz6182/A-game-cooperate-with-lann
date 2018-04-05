@@ -16,6 +16,7 @@ TestSquare::TestSquare():
 
 TestSquare::~TestSquare()
 {
+	delete mTexture;
 }
 
 void TestSquare::OnInitialize()

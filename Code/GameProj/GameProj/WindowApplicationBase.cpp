@@ -11,9 +11,10 @@ LRESULT CALLBACK ForwardMessageProcess(HWND hWnd, UINT msg, WPARAM wParam, LPARA
 	return globalDirectApplicationForTrasport->MessageProcess(hWnd, msg, wParam, lParam);
 }
 
-WindowApplicationBase::WindowApplicationBase(HINSTANCE instance):
+WindowApplicationBase::WindowApplicationBase(HINSTANCE instance) :
 	mApplicationInstance(instance),
-	mMainWIndowHandler(0)
+	mMainWIndowHandler(0),
+	mVideoSettingConfig("Resource\\Config\\VideoSetting.json")
 {
 	mWindowSize.Width = 800;
 	mWindowSize.Height = 600;
@@ -55,6 +56,7 @@ void WindowApplicationBase::Quit()
 
 bool WindowApplicationBase::Initialize()
 {
+	mVideoSettingConfig.GetConfig();
 	return InitializeMainWindow();
 }
 

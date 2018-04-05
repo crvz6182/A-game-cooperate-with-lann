@@ -12,6 +12,9 @@ GameWorld::GameWorld()
 
 GameWorld::~GameWorld()
 {
+	for (auto & actor : mActors) {
+		delete actor;
+	}
 }
 
 GameWorld * GameWorld::GetWorld()
@@ -29,8 +32,8 @@ bool GameWorld::Initialize(ID2D1RenderTarget* renderTarget)
 	mInput = HIDInput::GetHIDInput();
 	SetRenderTarget(renderTarget);
 
-	for (Index i = 0; i < mActors.GetLength(); ++i) {
-		mActors[i]->OnInitialize();
+	for (auto& actor : mActors) {
+		actor->OnInitialize();
 	}
 
 	return true;
@@ -48,14 +51,14 @@ void GameWorld::RegisterActor(Actor * actor)
 
 void GameWorld::Update(TimeSlotInSecond deltaSecond)
 {
-	for (Index i = 0; i < mActors.GetLength(); ++i) {
-		mActors[i]->Update(deltaSecond);
+	for (auto& actor : mActors) {
+		actor->Update(deltaSecond);
 	}
 }
 
 void GameWorld::Perform()
 {
-	for (Index i = 0; i < mActors.GetLength(); ++i) {
-		mActors[i]->Draw(mRenderTarget);
+	for (auto& actor: mActors) {
+		actor->Draw(mRenderTarget);
 	}
 }

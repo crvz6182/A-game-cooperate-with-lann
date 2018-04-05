@@ -6,6 +6,10 @@
 class Actor : public IStringPerformable
 {
 public:
+	Actor() {}
+	virtual ~Actor() {}
+
+	Actor(const Actor&) = delete;
 
 	virtual void OnInitialize() = 0;
 

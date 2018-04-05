@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="Config.h" />
     <ClInclude Include="DirectApplicationBase.h" />
     <ClInclude Include="DirectUtility.h" />
     <ClInclude Include="FileIO.h" />
@@ -205,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Config.cpp" />
     <ClCompile Include="DirectApplicationBase.cpp" />
     <ClCompile Include="DirectUtility.cpp" />
     <ClCompile Include="FileIO.cpp" />

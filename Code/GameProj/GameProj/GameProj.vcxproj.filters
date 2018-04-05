@@ -243,6 +243,9 @@
     <ClInclude Include="Transform.h">
       <Filter>头文件\Math</Filter>
     </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>头文件\Framework\FunctionalLibrary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -295,6 +298,9 @@
     </ClCompile>
     <ClCompile Include="Transform.cpp">
       <Filter>源文件\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>源文件\Framework\FunctionalLibrary</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -69,14 +69,14 @@ const String JsonCommunicator::GetAttributeValue(const String& attribute) {
 	tFilestr.open(tLDir);
 	tPbuf = tFilestr.rdbuf();
 	tSize = tPbuf->pubseekoff(0, std::ios::end, std::ios::in);
-	tPbuf->pubseekpos(0, std::ios::in);
-	tBuffer = new char[static_cast <unsigned int>(tSize)];
-	tPbuf->sgetn(tBuffer, tSize);
-	tFilestr.close();
-	Document tDocument;
-	const char *tCBuffer = tBuffer;
-	tDocument.Parse(tCBuffer);
-	if (tDocument.HasMember(tAttribute.c_str())) {
+	if (tSize != -1) {
+		tPbuf->pubseekpos(0, std::ios::in);
+		tBuffer = new char[static_cast <unsigned int>(tSize)];
+		tPbuf->sgetn(tBuffer, tSize);
+		tFilestr.close();
+		Document tDocument;
+		const char *tCBuffer = tBuffer;
+		tDocument.Parse(tCBuffer);
 		return tDocument[tAttribute.c_str()].GetString();
 	}
 	else {

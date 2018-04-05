@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <map>
+#include <initializer_list>
 
 using Index = unsigned int;
 using Count = unsigned int;
@@ -46,6 +47,11 @@ template<typename T>
 class Array
 {
 public:
+	Array() {};
+	~Array() {};
+
+	Array(std::initializer_list<T> il) :mVector(il) {}
+
 	void Append(T t)
 	{
 		mVector.push_back(t);
@@ -59,6 +65,17 @@ public:
 	T& operator[](Index ind)
 	{
 		return mVector[ind];
+	}
+
+	//begin end 提供迭代器，用于for(auto :)式遍历
+	auto begin() const
+	{
+		return mVector.cbegin();
+	}
+
+	auto end() const
+	{
+		return mVector.cend();
 	}
 private:
 	std::vector<T> mVector;

@@ -325,3 +325,6 @@ ASALocalRun/
 *.db
 Code/GameProj/.vs/GameProj/v15/Browse.VC.db
 Code/GameProj/.vs/GameProj/v15/.suo
+*.db
+Code/GameProj/.vs/GameProj/v15/.suo
+*.exe
