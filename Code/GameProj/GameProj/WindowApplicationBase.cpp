@@ -14,7 +14,7 @@ LRESULT CALLBACK ForwardMessageProcess(HWND hWnd, UINT msg, WPARAM wParam, LPARA
 WindowApplicationBase::WindowApplicationBase(HINSTANCE instance) :
 	mApplicationInstance(instance),
 	mMainWIndowHandler(0),
-	mVideoSettingConfig("Resource\\Config\\VideoSetting.json")
+	mVideoSettingConfig("./Resource/Config/VideoSettings.json")
 {
 	mWindowSize.Width = 800;
 	mWindowSize.Height = 600;

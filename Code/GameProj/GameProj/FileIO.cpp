@@ -13,18 +13,28 @@ IFileIOBase::~IFileIOBase() {
 
 bool IFileIOBase::SetFileDirectory(const String& directory) {
 	const wchar_t *tLDir = directory;
+	std::string tDir = directory;
 	std::fstream tIn;
 	tIn.open(tLDir);
 	mFileDirectory = directory;
 	if (!tIn) {
-		std::ofstream tOut(tLDir);
+		std::ofstream tOut;
+		tOut.open(tLDir);
 		if (tOut) { // 如果创建成功
-			tOut.close();  // 执行完操作后关闭文件句柄
+			tOut.close();  // 关闭文件
+			return true;
 		}
 		else {
-			//创建失败
+			int tFlag = _mkdir(tDir.c_str());
+			tOut.open(tLDir);
+			if (tOut) { // 如果创建成功
+				tOut.close();  // 关闭文件
+				return true;
+			}
+			else {
+				return false;
+			}
 		}
-		return false;
 	}
 	else {
 		return true;

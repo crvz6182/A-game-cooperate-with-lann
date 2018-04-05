@@ -86,9 +86,12 @@ String::operator const WCHAR* ()const
 
 String::operator const std::string ()const
 {
-	std::ostringstream tOss;
-	tOss << mContent.c_str();
-	return tOss.str();
+	if (mContent.length() == 0)
+		return "";
+
+	std::string str;
+	str.assign(mContent.begin(), mContent.end());
+	return str;
 }
 
 String::operator const int()const
