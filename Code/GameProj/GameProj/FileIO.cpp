@@ -122,7 +122,8 @@ bool JsonCommunicator::SetAttributeValue(const String& attribute, const String& 
 	}
 	tFileout.open(tLDir, std::ios::trunc);
 	Document::AllocatorType &tAllocator = tDocument.GetAllocator();
-	tDocument.RemoveMember(tAttribute.c_str());
+	if (tDocument.HasMember(tAttribute.c_str()))
+		tDocument.RemoveMember(tAttribute.c_str());
 	tDocument.AddMember(Value(tAttribute.c_str(), tAllocator), Value(tValue.c_str(), tAllocator), tAllocator);
 	StringBuffer tBuf;
 	PrettyWriter<StringBuffer> tPretty_writer(tBuf);
