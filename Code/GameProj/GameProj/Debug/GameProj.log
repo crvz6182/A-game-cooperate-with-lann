@@ -1,26 +1,8 @@
-﻿  Actor.cpp
+﻿  DirectApplicationBase.cpp
   c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  Config.cpp
-  DirectApplicationBase.cpp
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  DirectUtility.cpp
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  FileIO.cpp
-  GameApplication.cpp
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  GameProj.cpp
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  GameWorld.cpp
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  HIDInput.cpp
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  PerformSystem.cpp
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  String.cpp
-  TestSquare.cpp
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  Texture.cpp
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  WindowApplicationBase.cpp
-  正在生成代码...
-  GameProj.vcxproj -> C:\Users\li\Desktop\Project Beginner\A-game-cooperate-with-lann\Code\GameProj\Debug\GameProj.exe
+d:\gamecooperated\code\gameproj\gameproj\directapplicationbase.cpp(94): warning C4244: “参数”: 从“Size1D”转换到“UINT”，可能丢失数据
+d:\gamecooperated\code\gameproj\gameproj\directapplicationbase.cpp(107): warning C4244: “=”: 从“Size1D”转换到“UINT”，可能丢失数据
+d:\gamecooperated\code\gameproj\gameproj\directapplicationbase.cpp(108): warning C4244: “=”: 从“Size1D”转换到“UINT”，可能丢失数据
+d:\gamecooperated\code\gameproj\gameproj\directapplicationbase.cpp(194): warning C4244: “=”: 从“Size1D”转换到“UINT”，可能丢失数据
+d:\gamecooperated\code\gameproj\gameproj\directapplicationbase.cpp(195): warning C4244: “=”: 从“Size1D”转换到“UINT”，可能丢失数据
+  GameProj.vcxproj -> D:\GameCooperated\Code\GameProj\Debug\GameProj.exe

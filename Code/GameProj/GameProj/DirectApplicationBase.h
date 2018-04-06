@@ -62,5 +62,7 @@ protected:
 	ID3D11RenderTargetView*		mRenderTargetView;		//渲染对象视图
 	ID3D11DepthStencilView*		mDepthStencilView;		//深度模板视图
 	ID3D11Texture2D*					mDepthStencilBuffer;		//深度模板缓冲区
+
+	VideoSettingConfig					mVideoSettingConfig;		//视频配置
 };
 
