@@ -1,8 +1,6 @@
 #pragma once
 #include <windowsx.h>
-#include "Math.h"
 #include "String.h"
-#include "Config.h"
 
 
 //窗体程序基类
@@ -60,6 +58,5 @@ protected:
 	HINSTANCE mApplicationInstance;		//程序实例
 	HWND			mMainWIndowHandler;		//窗体句柄
 	Size2D			mWindowSize;						//输入
-	VideoSettingConfig			mVideoSettingConfig;			//视频配置
 };
 

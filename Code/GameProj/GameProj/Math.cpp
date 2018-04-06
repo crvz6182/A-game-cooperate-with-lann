@@ -1,6 +1,14 @@
 #include "stdafx.h"
 #include "Math.h"
 
+Math::Math() {
+
+}
+
+Math::~Math() {
+
+}
+
 inline const float Math::Clamp(const float& value, const float& leftBorder, const float& rightBorder) {
 	if (value < leftBorder)
 		return leftBorder;

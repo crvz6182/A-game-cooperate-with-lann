@@ -13,28 +13,18 @@ IFileIOBase::~IFileIOBase() {
 
 bool IFileIOBase::SetFileDirectory(const String& directory) {
 	const wchar_t *tLDir = directory;
-	std::string tDir = directory;
 	std::fstream tIn;
 	tIn.open(tLDir);
 	mFileDirectory = directory;
 	if (!tIn) {
-		std::ofstream tOut;
-		tOut.open(tLDir);
+		std::ofstream tOut(tLDir);
 		if (tOut) { // 如果创建成功
-			tOut.close();  // 关闭文件
-			return true;
+			tOut.close();  // 执行完操作后关闭文件句柄
 		}
 		else {
-			int tFlag = _mkdir(tDir.c_str());
-			tOut.open(tLDir);
-			if (tOut) { // 如果创建成功
-				tOut.close();  // 关闭文件
-				return true;
-			}
-			else {
-				return false;
-			}
+			//创建失败
 		}
+		return false;
 	}
 	else {
 		return true;
@@ -79,14 +69,14 @@ const String JsonCommunicator::GetAttributeValue(const String& attribute) {
 	tFilestr.open(tLDir);
 	tPbuf = tFilestr.rdbuf();
 	tSize = tPbuf->pubseekoff(0, std::ios::end, std::ios::in);
-	if (tSize != -1) {
-		tPbuf->pubseekpos(0, std::ios::in);
-		tBuffer = new char[static_cast <unsigned int>(tSize)];
-		tPbuf->sgetn(tBuffer, tSize);
-		tFilestr.close();
-		Document tDocument;
-		const char *tCBuffer = tBuffer;
-		tDocument.Parse(tCBuffer);
+	tPbuf->pubseekpos(0, std::ios::in);
+	tBuffer = new char[static_cast <unsigned int>(tSize)];
+	tPbuf->sgetn(tBuffer, tSize);
+	tFilestr.close();
+	Document tDocument;
+	const char *tCBuffer = tBuffer;
+	tDocument.Parse(tCBuffer);
+	if (tDocument.HasMember(tAttribute.c_str())) {
 		return tDocument[tAttribute.c_str()].GetString();
 	}
 	else {

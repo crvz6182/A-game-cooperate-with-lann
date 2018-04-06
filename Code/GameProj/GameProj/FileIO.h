@@ -4,7 +4,6 @@
 #include <io.h>
 #include <iostream>
 #include <fstream>
-#include <direct.h> 
 #include "ThirdParty/rapidjson/document.h"
 #include "ThirdParty/rapidjson/prettywriter.h"
 #include "ThirdParty/rapidjson/writer.h"
@@ -31,7 +30,6 @@ private:
 	
 	//文件路径
 	String mFileDirectory;
-
 };
 
 //ASCII文件输入输出层

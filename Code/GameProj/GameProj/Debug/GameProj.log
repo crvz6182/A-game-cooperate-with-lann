@@ -1,2 +1,17 @@
-﻿  WindowApplicationBase.cpp
-  GameProj.vcxproj -> C:\Users\li\Desktop\Project Beginner\A-game-cooperate-with-lann\Code\GameProj\Debug\GameProj.exe
+﻿  stdafx.cpp
+  DirectApplicationBase.cpp
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  DirectUtility.cpp
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  FileIO.cpp
+  HIDInput.cpp
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  Math.cpp
+  String.cpp
+  WindowApplicationBase.cpp
+  GameProj.cpp
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  Timer.cpp
+  正在生成代码...
+  LINK : 没有找到 C:\Users\li\Desktop\Project Beginner\Code\GameProj\Debug\GameProj.exe 或上一个增量链接没有生成它；正在执行完全链接
+  GameProj.vcxproj -> C:\Users\li\Desktop\Project Beginner\Code\GameProj\Debug\GameProj.exe
