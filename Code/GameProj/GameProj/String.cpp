@@ -79,6 +79,16 @@ const Count String::GetLength() const
 	return mContent.length();
 }
 
+const int String::toInt() const
+{
+	return std::stoi(mContent);
+}
+
+const float String::toFloat() const
+{
+	return std::stof(mContent);
+}
+
 String::operator const WCHAR* ()const
 {
 	return mContent.c_str();
@@ -92,14 +102,4 @@ String::operator const std::string ()const
 	std::string str;
 	str.assign(mContent.begin(), mContent.end());
 	return str;
-}
-
-String::operator const int()const
-{
-	return std::stoi(mContent);
-}
-
-String::operator const float()const
-{
-	return std::stof(mContent);
 }

@@ -32,29 +32,29 @@ void VideoSettingConfig::GetConfig() {
 		SetConfig();
 	}
 	else {
-		mResolution.Width = (Size1D)tValue_x;
+		mResolution.Width = (Size1D)tValue_x.toInt();
 		String tValue_y = mFile.GetAttributeValue("mResolution_y");
-		mResolution.Height = (Size1D)tValue_y;
+		mResolution.Height = (Size1D)tValue_y.toInt();
 		tValue_x = mFile.GetAttributeValue("mRefreshRate");
-		mRefreshRate = tValue_x;
+		mRefreshRate = tValue_x.toInt();
 		tValue_x = mFile.GetAttributeValue("mAntiAliasLevel");
-		mAntiAliasLevel = tValue_x;
+		mAntiAliasLevel = tValue_x.toInt();
 		int tValue;
-		tValue = mFile.GetAttributeValue("mIsFullScreen");
+		tValue = mFile.GetAttributeValue("mIsFullScreen").toInt();
 		if (tValue == 0) {
 			mIsFullScreen = false;
 		}
 		else {
 			mIsFullScreen = true;
 		}
-		tValue = mFile.GetAttributeValue("mIsAntiAlias");
+		tValue = mFile.GetAttributeValue("mIsAntiAlias").toInt();
 		if (tValue == 0) {
 			mIsAntiAlias = false;
 		}
 		else {
 			mIsAntiAlias = true;
 		}
-		tValue = mFile.GetAttributeValue("mAntiAliasType");
+		tValue = mFile.GetAttributeValue("mAntiAliasType").toInt();
 		if (tValue == 0) {
 			mAntiAliasType = MSAA;
 		}
