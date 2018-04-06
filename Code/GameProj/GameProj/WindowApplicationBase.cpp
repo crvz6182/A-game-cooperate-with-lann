@@ -11,9 +11,10 @@ LRESULT CALLBACK ForwardMessageProcess(HWND hWnd, UINT msg, WPARAM wParam, LPARA
 	return globalDirectApplicationForTrasport->MessageProcess(hWnd, msg, wParam, lParam);
 }
 
-WindowApplicationBase::WindowApplicationBase(HINSTANCE instance):
+WindowApplicationBase::WindowApplicationBase(HINSTANCE instance) :
 	mApplicationInstance(instance),
-	mMainWIndowHandler(0)
+	mMainWIndowHandler(0),
+	mVideoSettingConfig("./Resource/Config/VideoSettings.json")
 {
 	mWindowSize.Width = 800;
 	mWindowSize.Height = 600;
@@ -55,6 +56,7 @@ void WindowApplicationBase::Quit()
 
 bool WindowApplicationBase::Initialize()
 {
+	mVideoSettingConfig.GetConfig();
 	return InitializeMainWindow();
 }
 
@@ -155,12 +157,12 @@ bool WindowApplicationBase::InitializeMainWindow()
 		return false;
 	}
 
-	RECT rect = { 0, 0, mWindowSize.Width, mWindowSize.Height };
+	RECT rect = { 0, 0, (LONG)mWindowSize.Width, (LONG)mWindowSize.Height };
 	AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
 	mMainWIndowHandler = CreateWindow(L"D3DApp", L"DirectApplication",
 		WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
-		mWindowSize.Width, mWindowSize.Height, 0, 0, mApplicationInstance, 0);
+		(UINT)mWindowSize.Width, (UINT)mWindowSize.Height, 0, 0, mApplicationInstance, 0);
 
 	if (!mMainWIndowHandler) {
 		/*DWORD e = GetLastError();

@@ -34,6 +34,48 @@
     <Filter Include="头文件\ThirdParty\rapidjson\msinttypes">
       <UniqueIdentifier>{35e863d1-dd33-4835-898f-ecb46f9d6bb4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\Framework">
+      <UniqueIdentifier>{8e769b08-08cd-402f-8c9a-57136d63de76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework">
+      <UniqueIdentifier>{c95ca2f8-482e-4da1-b517-a150d76e99a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\Win">
+      <UniqueIdentifier>{82460ad2-d920-4980-9ee1-52df6a9cadc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Framework\Win">
+      <UniqueIdentifier>{5fc0c6d5-c390-48f9-bf4a-4fb7a76d00b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\Direct">
+      <UniqueIdentifier>{b43a51f2-c085-4801-b0ff-5b9828bbe329}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Framework\Direct">
+      <UniqueIdentifier>{d01a029f-5e6e-4010-9fdd-51faa1d8a3be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Framework\FunctionalLibrary">
+      <UniqueIdentifier>{613baeee-0bd3-44b2-8667-ec390f452d15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\FunctionalLibrary">
+      <UniqueIdentifier>{c0f75a5f-a636-4a16-b51b-209132e4f3ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Framework\GameWorld">
+      <UniqueIdentifier>{61bfb609-8fe6-46f8-8aab-d4fe0e1956a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\GameWorld">
+      <UniqueIdentifier>{4fa2917d-f58a-4483-9a69-c7736a73b401}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Interfaces">
+      <UniqueIdentifier>{dbf8fae6-ee76-4f1c-8f48-830117829079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\ThirdParty">
+      <UniqueIdentifier>{053c2fb2-50e2-4b67-a4dd-f92483712176}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\GameWorld\Objects">
+      <UniqueIdentifier>{a43934ba-0dcd-42cc-b2a1-87dd2a753451}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Framework\GameWorld\Objects">
+      <UniqueIdentifier>{28c25eed-f26a-4fe2-b3d1-033c86df6624}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -43,21 +85,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="GameProj.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowApplicationBase.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="DirectApplicationBase.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="DirectUtility.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="String.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Math.h">
@@ -171,11 +198,53 @@
     <ClInclude Include="ThirdParty\rapidjson\msinttypes\stdint.h">
       <Filter>头文件\ThirdParty\rapidjson\msinttypes</Filter>
     </ClInclude>
-    <ClInclude Include="FileIO.h">
-      <Filter>头文件</Filter>
+    <ClInclude Include="WindowApplicationBase.h">
+      <Filter>头文件\Framework\Win</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectUtility.h">
+      <Filter>头文件\Framework\Direct</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectApplicationBase.h">
+      <Filter>头文件\Framework\Direct</Filter>
     </ClInclude>
     <ClInclude Include="HIDInput.h">
+      <Filter>头文件\Framework\Direct</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>头文件\Framework\FunctionalLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="String.h">
+      <Filter>头文件\Framework\FunctionalLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIO.h">
+      <Filter>头文件\Framework\FunctionalLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="GameWorld.h">
+      <Filter>头文件\Framework\GameWorld</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>头文件\Framework\FunctionalLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="PerformSystem.h">
+      <Filter>头文件\Framework\GameWorld</Filter>
+    </ClInclude>
+    <ClInclude Include="IStringPerformable.h">
+      <Filter>头文件\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="GameApplication.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>头文件\Framework\GameWorld\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="TestSquare.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>头文件\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>头文件\Framework\FunctionalLibrary</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -185,29 +254,53 @@
     <ClCompile Include="GameProj.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowApplicationBase.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="DirectApplicationBase.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="DirectUtility.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="String.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Math.cpp">
       <Filter>源文件\Math</Filter>
     </ClCompile>
-    <ClCompile Include="FileIO.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="WindowApplicationBase.cpp">
+      <Filter>源文件\Framework\Win</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectUtility.cpp">
+      <Filter>源文件\Framework\Direct</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectApplicationBase.cpp">
+      <Filter>源文件\Framework\Direct</Filter>
     </ClCompile>
     <ClCompile Include="HIDInput.cpp">
+      <Filter>源文件\Framework\Direct</Filter>
+    </ClCompile>
+    <ClCompile Include="String.cpp">
+      <Filter>源文件\Framework\FunctionalLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>源文件\Framework\FunctionalLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="FileIO.cpp">
+      <Filter>源文件\Framework\FunctionalLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="GameWorld.cpp">
+      <Filter>源文件\Framework\GameWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>源文件\Framework\FunctionalLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="PerformSystem.cpp">
+      <Filter>源文件\Framework\GameWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="GameApplication.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>源文件\Framework\GameWorld\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="TestSquare.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>源文件\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>源文件\Framework\FunctionalLibrary</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
