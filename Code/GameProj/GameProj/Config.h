@@ -50,6 +50,10 @@ public:
 	Array<AntiAliasType> GetAllAntiAliasType() const;
 	Array<int> GetAllAntiAliasLevel() const;
 
+	//检测设置值是否合法
+	bool IsPositive(String value) const;
+	bool IsBool(String value) const;
+	bool IsAntiAliasLevel(String value) const;
 private:
 	//设置的临时值
 	Size2D mResolution;
