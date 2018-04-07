@@ -107,9 +107,10 @@ const String JsonCommunicator::GetAttributeValue(const String& attribute) {
 		Document tDocument;
 		std::string tBuffer(tPbuf.str());
 		tDocument.Parse<0>(tBuffer.c_str());
-		if (tDocument.HasParseError()) {
+		if (tDocument.HasParseError())
 			return "";
-		}
+		if (!tDocument.HasMember(tAttribute.c_str()))
+			return "";
 		return tDocument[tAttribute.c_str()].GetString();
 	}
 	else {
