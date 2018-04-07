@@ -91,7 +91,7 @@ void DirectApplicationBase::OnResize()
 
 	//重新缩放渲染对象视图
 
-	HR(mSwapChain->ResizeBuffers(1, mVideoSettingConfig.GetResolution().Width, mVideoSettingConfig.GetResolution().Height, DXGI_FORMAT_R8G8B8A8_UNORM, 0));
+	HR(mSwapChain->ResizeBuffers(1, (UINT)mVideoSettingConfig.GetResolution().Width, (UINT)mVideoSettingConfig.GetResolution().Height, DXGI_FORMAT_R8G8B8A8_UNORM, 0));
 	ID3D11Texture2D* backBuffer;
 	HR(mSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&backBuffer)));
 	HR(mDevice->CreateRenderTargetView(backBuffer, 0, &mRenderTargetView));
@@ -104,8 +104,8 @@ void DirectApplicationBase::OnResize()
 	//创建新的深度模板视图和深度模板缓冲区
 	D3D11_TEXTURE2D_DESC depthStencilDesc;
 
-	depthStencilDesc.Width = mVideoSettingConfig.GetResolution().Width;
-	depthStencilDesc.Height = mVideoSettingConfig.GetResolution().Height;
+	depthStencilDesc.Width = (UINT)mVideoSettingConfig.GetResolution().Width;
+	depthStencilDesc.Height = (UINT)mVideoSettingConfig.GetResolution().Height;
 	depthStencilDesc.MipLevels = 1;
 	depthStencilDesc.ArraySize = 1;
 	depthStencilDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
@@ -191,8 +191,8 @@ bool DirectApplicationBase::InitializeDirect()
 	//创建交换链所需的参数描述
 	DXGI_SWAP_CHAIN_DESC dxgiSwapChainDescription;
 
-	dxgiSwapChainDescription.BufferDesc.Width = mVideoSettingConfig.GetResolution().Width;
-	dxgiSwapChainDescription.BufferDesc.Height = mVideoSettingConfig.GetResolution().Height;
+	dxgiSwapChainDescription.BufferDesc.Width = (UINT)mVideoSettingConfig.GetResolution().Width;
+	dxgiSwapChainDescription.BufferDesc.Height = (UINT)mVideoSettingConfig.GetResolution().Height;
 	dxgiSwapChainDescription.BufferDesc.RefreshRate.Numerator = 60;
 	dxgiSwapChainDescription.BufferDesc.RefreshRate.Denominator = 1;
 	dxgiSwapChainDescription.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;

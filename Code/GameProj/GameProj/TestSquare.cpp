@@ -50,5 +50,5 @@ void TestSquare::ReceiveBehaviour(const InputInformations & strs)
 
 void TestSquare::MoveRight(Percent percent)
 {
-	mVelocity = 30.0*percent;
+	mVelocity = 30.0f*percent;
 }
