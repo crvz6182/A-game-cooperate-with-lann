@@ -1,8 +1,2 @@
-﻿  DirectApplicationBase.cpp
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\gamecooperated\code\gameproj\gameproj\directapplicationbase.cpp(94): warning C4244: “参数”: 从“Size1D”转换到“UINT”，可能丢失数据
-d:\gamecooperated\code\gameproj\gameproj\directapplicationbase.cpp(107): warning C4244: “=”: 从“Size1D”转换到“UINT”，可能丢失数据
-d:\gamecooperated\code\gameproj\gameproj\directapplicationbase.cpp(108): warning C4244: “=”: 从“Size1D”转换到“UINT”，可能丢失数据
-d:\gamecooperated\code\gameproj\gameproj\directapplicationbase.cpp(194): warning C4244: “=”: 从“Size1D”转换到“UINT”，可能丢失数据
-d:\gamecooperated\code\gameproj\gameproj\directapplicationbase.cpp(195): warning C4244: “=”: 从“Size1D”转换到“UINT”，可能丢失数据
-  GameProj.vcxproj -> D:\GameCooperated\Code\GameProj\Debug\GameProj.exe
+﻿  Config.cpp
+  GameProj.vcxproj -> C:\Users\li\Desktop\Project Beginner\A-game-cooperate-with-lann\Code\GameProj\Debug\GameProj.exe

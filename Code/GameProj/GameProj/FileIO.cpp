@@ -39,27 +39,26 @@ int32_t IFileIOBase::createDirectory(const std::string &directoryPath)	//´ÓÍøÉÏ³
 }
 
 bool IFileIOBase::SetFileDirectory(const String& directory) {
-	const wchar_t *tLDir = directory;
 	std::string tDir = directory;
-	std::fstream tIn;
-	tIn.open(tLDir);
+	std::ifstream tIn;
+	tIn.open(tDir);
 	mFileDirectory = directory;
 	if (!tIn) {
 		std::ofstream tOut;
-		tOut.open(tLDir);
+		tOut.open(tDir);
 		if (tOut) { // Èç¹û´´½¨³É¹¦
 			tOut.close();  // ¹Ø±ÕÎÄ¼þ
 			return true;
 		}
 		else {
 			createDirectory(tDir);
-			tOut.open(tLDir);
+			tOut.open(tDir);
 			if (tOut) { // Èç¹û´´½¨³É¹¦
 				tOut.close();  // ¹Ø±ÕÎÄ¼þ
 				return true;
 			}
 			else {
-				return false;
+				return false;	//´´½¨Ê§°Ü
 			}
 		}
 	}
