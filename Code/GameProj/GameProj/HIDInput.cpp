@@ -33,6 +33,17 @@ bool HIDInput::QueryInputs()
 	return true;
 }
 
+InputInformations HIDInput::GetBehaviours()
+{
+	InputInformations tReturn;
+	bool moveRight = (bool)GetKeyState(DIK_D);
+	if (moveRight) {
+		BreakPoint();
+	}
+	tReturn.Append(Pair<String, Percent>("MoveRight", (Percent)moveRight));
+	return tReturn;
+}
+
 char HIDInput::GetKeyState(DWORD macroKeys_DIK_)
 {
 	return mKeyboardState[macroKeys_DIK_] & 0x80;

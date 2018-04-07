@@ -1,9 +1,9 @@
 {
-    "AntiAliasLevel": "4",
-    "IsFullScreen": "1",
     "IsAntiAlias": "1",
     "Resolution_x": "1920",
     "Resolution_y": "1080",
     "RefreshRate": "60",
+    "AntiAliasLevel": "4",
+    "IsFullScreen": "1",
     "AntiAliasType": "0"
 }

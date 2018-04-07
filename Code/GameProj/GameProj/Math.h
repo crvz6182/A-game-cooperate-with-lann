@@ -43,6 +43,30 @@ struct Point2D {
 
 };
 
+inline void BreakPoint()
+{
+
+}
+
+template<typename T1, typename T2>
+class Pair
+{
+public:
+	Pair(const T1& first, const T2& second) :mPair(first, second) {}
+
+	T1 GetFirst() const
+	{
+		return mPair.first;
+	}
+
+	T2 GetSecond() const
+	{
+		return mPair.second;
+	}
+private:
+	std::pair<T1, T2> mPair;
+};
+
 template<typename T>
 class Array
 {
@@ -84,6 +108,11 @@ private:
 template<typename TKey, typename TValue>
 class Dictionary
 {
+public:
+	void Create(const TKey& key, const TValue& value)
+	{
+		mMap[key] = value;
+	}
 private:
 	std::map<TKey, TValue> mMap;
 };

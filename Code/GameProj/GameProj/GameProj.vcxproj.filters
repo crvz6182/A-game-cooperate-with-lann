@@ -246,6 +246,9 @@
     <ClInclude Include="Config.h">
       <Filter>头文件\Framework\FunctionalLibrary</Filter>
     </ClInclude>
+    <ClInclude Include="IControllable.h">
+      <Filter>头文件\Framework\GameWorld\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
