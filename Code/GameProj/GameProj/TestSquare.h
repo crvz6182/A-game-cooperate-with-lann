@@ -23,11 +23,13 @@ public:
 	virtual void ReceiveBehaviour(const InputInformations& strs) override;
 
 	void MoveRight(Percent percent);
+
+	void MoveUp(Percent percent);
 private:
 	HIDInput*				mInput;
 	RectangleTexture*	mTexture;
 	//Transform2D			mTransform;
 	Translation2D			mLocation;
-	Velocity2D				mVelocity;
+	Velocity2D				mWalkVelocity;
 };
 

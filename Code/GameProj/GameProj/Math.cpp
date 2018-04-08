@@ -1,15 +1,6 @@
 #include "stdafx.h"
 #include "Math.h"
 
-inline const float Math::Clamp(const float& value, const float& leftBorder, const float& rightBorder) {
-	if (value < leftBorder)
-		return leftBorder;
-	else if (value > rightBorder)
-		return rightBorder;
-	else
-		return value;
-}
-
 inline const float Math::Loop(const float& value, const float& leftBorder, const float& rightBorder) {
 	if (value < leftBorder || value > rightBorder) {
 		float tValue = value;

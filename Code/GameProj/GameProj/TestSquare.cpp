@@ -6,11 +6,9 @@ TestSquare::TestSquare():
 	mInput(nullptr),
 	mTexture(nullptr)
 {
-	mLocation.x = 50;
-	mLocation.y = 100;
+	mLocation = { 50,100 };
 
-	mVelocity.x = 0;
-	mVelocity.y = 0;
+	mWalkVelocity = { 0,0 };
 }
 
 
@@ -30,8 +28,11 @@ void TestSquare::OnInitialize()
 void TestSquare::Update(TimeSlotInSecond deltaSecond)
 {
 	ReceiveBehaviour(mInput->GetBehaviours());
-	
-	mLocation += (mVelocity * deltaSecond);
+	mWalkVelocity.x = Math::Clamp(mWalkVelocity.x, -30.0f, 30.0f);
+	mWalkVelocity.y = Math::Clamp(mWalkVelocity.y, -30.0f, 30.0f);
+
+	mLocation += (mWalkVelocity * deltaSecond);
+	mWalkVelocity = { 0, 0 };
 }
 
 void TestSquare::Draw(ID2D1RenderTarget* renderTarget) const
@@ -45,10 +46,35 @@ void TestSquare::ReceiveBehaviour(const InputInformations & strs)
 		if (pair.GetFirst() == "MoveRight") {
 			MoveRight(pair.GetSecond());
 		}
+		
+		if (pair.GetFirst() == "MoveLeft") {
+			MoveRight(-pair.GetSecond());
+		}
+
+		if (pair.GetFirst() == "MoveUp") {
+			MoveUp(pair.GetSecond());
+		}
+
+		if (pair.GetFirst() == "MoveDown") {
+			MoveUp(-pair.GetSecond());
+		}
 	}
 }
 
 void TestSquare::MoveRight(Percent percent)
 {
-	mVelocity = 30.0f*percent;
+	if (percent == ActionState::Release && mWalkVelocity.x == 30.0f) {
+		mWalkVelocity.x = 0;
+		return;
+	}
+	mWalkVelocity.x = 30.0f;
+}
+
+void TestSquare::MoveUp(Percent percent)
+{
+	if (percent == ActionState::Release && mWalkVelocity.y == 30.0f) {
+		mWalkVelocity.y = 0;
+		return;
+	}
+	mWalkVelocity.y = -30.0f;
 }

@@ -52,7 +52,7 @@ template<typename T1, typename T2>
 class Pair
 {
 public:
-	Pair(const T1& first, const T2& second) :mPair(first, second) {}
+	Pair(const T1& first = T1(), const T2& second = T2()) :mPair(first, second) {}
 
 	T1 GetFirst() const
 	{
@@ -71,14 +71,17 @@ template<typename T>
 class Array
 {
 public:
-	Array() {};
-	~Array() {};
-
+	Array() {}
 	Array(std::initializer_list<T> il) :mVector(il) {}
 
 	void Append(T t)
 	{
 		mVector.push_back(t);
+	}
+
+	void Clear()
+	{
+		mVector.clear();
 	}
 
 	const Count GetLength() const
@@ -113,6 +116,11 @@ public:
 	{
 		mMap[key] = value;
 	}
+
+	void Modify(const TKey& key, const TValue& value)
+	{
+		mMap[key] = value;
+	}
 private:
 	std::map<TKey, TValue> mMap;
 };
@@ -132,7 +140,15 @@ namespace Math
 	rightBorder：右边界值
 	返回值：被限制后的值
 	*/
-	inline static const float Clamp(const float& value, const float& leftBorder, const float& rightBorder);
+	inline const float Clamp(const float& value, const float& leftBorder, const float& rightBorder)
+	{
+		if (value < leftBorder)
+			return leftBorder;
+		else if (value > rightBorder)
+			return rightBorder;
+		else
+			return value;
+	}
 
 	/*
 	返回一个值，该值被限定在一个区域内，该区间假设平铺于数轴，该值若超出边界值，则返回该值处于区间内的对应位置。
@@ -141,11 +157,23 @@ namespace Math
 	rightBorder：右边界值
 	返回值：被限制后的值
 	*/
-	inline static const float Loop(const float& value, const float& leftBorder, const float& rightBorder);
+	inline const float Loop(const float& value, const float& leftBorder, const float& rightBorder);
 
 	//返回较小值
-	inline static const float Min(const float& a, const float& b);
+	inline const float Min(const float& a, const float& b);
 
 	//返回较大值
-	inline static const float Max(const float& a, const float& b);
+	inline const float Max(const float& a, const float& b);
+};
+
+template<typename T, Index size>
+struct ArrayFixed
+{
+public:
+
+	T & operator[](Index ind) { return _t[ind]; }
+
+	T* GetPointer() { return _t; }
+private:
+	T _t[size];
 };

@@ -74,6 +74,11 @@ const bool String::operator==(const String& rhs) const
 	return mContent.compare(rhs.mContent) == 0;
 }
 
+const bool String::operator!=(const String & rhs) const
+{
+	return !operator==(rhs);
+}
+
 const Count String::GetLength() const
 {
 	return mContent.length();

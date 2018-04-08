@@ -43,6 +43,7 @@ public:
 	const String operator*(const int& rhs) const;
 	//字符串比较
 	const bool operator==(const String& rhs) const;
+	const bool operator!=(const String& rhs) const;
 	//返回字符串长度
 	const Count GetLength() const;
 

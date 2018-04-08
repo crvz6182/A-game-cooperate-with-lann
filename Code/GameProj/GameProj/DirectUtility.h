@@ -18,7 +18,7 @@
 //释放Direct组件
 #define ReleaseCOM(x) {if(x){x->Release();}x=nullptr;}
 //以全零初始化
-#define ZeroInitialize(x) {ZeroMemory(x, sizeof(x));}
+#define ZeroInitialize(x) {ZeroMemory(&x, sizeof(x));}
 
 //用于检测函数执行结果
 #ifndef HR

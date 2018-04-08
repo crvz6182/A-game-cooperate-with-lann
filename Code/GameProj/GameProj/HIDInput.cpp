@@ -24,7 +24,7 @@ void HIDInput::DestroyHIDInput()
 
 bool HIDInput::QueryInputs()
 {
-	if (!QueryDevice(mKeyboardInput, mKeyboardState, sizeof(mKeyboardState))) {
+	if (!QueryDevice(mKeyboardInput, mKeyboardState.GetPointer(), sizeof(mKeyboardState))) {
 		return false;
 	}
 	if (!QueryDevice(mMouseInput, &mMouseState, sizeof(mMouseState))) {
@@ -35,18 +35,25 @@ bool HIDInput::QueryInputs()
 
 InputInformations HIDInput::GetBehaviours()
 {
-	InputInformations tReturn;
-	bool moveRight = (bool)GetKeyState(DIK_D);
-	if (moveRight) {
-		BreakPoint();
+	mInformations.Clear();
+	for (DWORD i = 0; i < KEYBOARD_SIZE; ++i) {
+		mKeyboardAction[i] = (ActionState)(((mPreviousState[i] & 0x80) >> 7) | ((mKeyboardState[i] & 0x80) >> 6));
+
+		String tActionName = mKeyMap[i];
+		if (tActionName != String(L"")) {
+			if (mKeyboardAction[i] != ActionState::Idle && mKeyboardAction[i] != ActionState::Hold) {
+				mInformations.Append({ tActionName, (Percent)mKeyboardAction[i] });
+			}
+		}
 	}
-	tReturn.Append(Pair<String, Percent>("MoveRight", (Percent)moveRight));
-	return tReturn;
+
+	mPreviousState = mKeyboardState;
+	return mInformations;
 }
 
-char HIDInput::GetKeyState(DWORD macroKeys_DIK_)
+bool HIDInput::GetKeyState(DWORD macroKeys_DIK_)
 {
-	return mKeyboardState[macroKeys_DIK_] & 0x80;
+	return (mKeyboardState[macroKeys_DIK_] & 0x80) >> 7;
 }
 
 bool HIDInput::Initialize(HINSTANCE hInstance, HWND hWindow)
@@ -61,9 +68,17 @@ bool HIDInput::Initialize(HINSTANCE hInstance, HWND hWindow)
 
 	HR(mMouseInput->SetDataFormat(&c_dfDIMouse));
 	HR(mMouseInput->SetCooperativeLevel(hWindow, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE));
-	
+
 	ZeroInitialize(mKeyboardState);
-	ZeroInitialize(&mMouseState);
+	ZeroInitialize(mPreviousState);
+	ZeroInitialize(mMouseState);
+
+	//×Ô¶¨Òå
+	BindKey(DIK_D, "MoveRight");
+	BindKey(DIK_A, "MoveLeft");
+	BindKey(DIK_W, "MoveUp");
+	BindKey(DIK_S, "MoveDown");
+
 	return true;
 }
 
@@ -75,7 +90,10 @@ ULONG HIDInput::Release()
 	return 0;
 }
 
-HIDInput::HIDInput()
+HIDInput::HIDInput() : 
+	mInput(nullptr),
+	mKeyboardInput(nullptr),
+	mMouseInput(nullptr)
 {
 }
 
@@ -97,4 +115,9 @@ bool HIDInput::QueryDevice(LPDIRECTINPUTDEVICE8 & inputDevice, LPVOID stateBuffe
 	}
 
 	return true;
+}
+
+void HIDInput::BindKey(DWORD macroKey_DIK_, const String & str)
+{
+	mKeyMap[macroKey_DIK_] = str;
 }
