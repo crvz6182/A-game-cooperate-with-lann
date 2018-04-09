@@ -1,7 +1,7 @@
 #pragma once
 #include <sstream>
 #include <string>
-#include <locale.h>
+#include "stdafx.h"
 
 using Count = unsigned int;
 
@@ -47,10 +47,13 @@ public:
 	//返回字符串长度
 	const Count GetLength() const;
 
+	//提供显式类型转换
+	const int toInt() const;
+	const float toFloat() const;
+
 	//提供隐式类型转换
 	operator const WCHAR*() const;
 	operator const std::string() const;
-	operator const int() const;
 
 private:
 

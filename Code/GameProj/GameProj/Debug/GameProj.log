@@ -1,4 +1,9 @@
-﻿  Config.cpp
-  Math.cpp
+﻿  GameApplication.cpp
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  Log.cpp
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  GameProj.cpp
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
   正在生成代码...
-  GameProj.vcxproj -> C:\Users\li\Desktop\Project Beginner\A-game-cooperate-with-lann\Code\GameProj\Debug\GameProj.exe
+Log.obj : error LNK2001: 无法解析的外部符号 "private: static class GameApplication * Log::mApplication" (?mApplication@Log@@0PAVGameApplication@@A)
+C:\Users\li\Desktop\Project Beginner\A-game-cooperate-with-lann\Code\GameProj\Debug\GameProj.exe : fatal error LNK1120: 1 个无法解析的外部命令

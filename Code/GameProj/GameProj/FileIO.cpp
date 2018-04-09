@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "FileIO.h"
+#define MAX_PATH_LEN 256
 
 using namespace rapidjson;
 
@@ -11,28 +12,69 @@ IFileIOBase::~IFileIOBase() {
 
 }
 
-bool IFileIOBase::SetFileDirectory(const String& directory) {
-	const wchar_t *tLDir = directory;
-	std::fstream tIn;
-	tIn.open(tLDir);
-	mFileDirectory = directory;
-	if (!tIn) {
-		std::ofstream tOut(tLDir);
+int32_t IFileIOBase::NewDirectory(const std::string &directoryPath)	//从网上抄的
+{
+	uint32_t dirPathLen = directoryPath.length();
+	if (dirPathLen > MAX_PATH_LEN)
+	{
+		return -1;
+	}
+	char tmpDirPath[MAX_PATH_LEN] = { 0 };
+	for (uint32_t i = 0; i < dirPathLen; ++i)
+	{
+		tmpDirPath[i] = directoryPath[i];
+		if (tmpDirPath[i] == '\\' || tmpDirPath[i] == '/')
+		{
+			if (_access(tmpDirPath, 0) != 0)
+			{
+				int32_t ret = _mkdir(tmpDirPath);
+				if (ret != 0)
+				{
+					return ret;
+				}
+			}
+		}
+	}
+	return 0;
+}
+
+bool IFileIOBase::NewFile(const std::string &tDir) {
+	std::ofstream tOut;
+	tOut.open(tDir);
+	if (tOut) { // 如果创建成功
+		tOut.close();  // 关闭文件
+		return true;
+	}
+	else {
+		if (NewDirectory(tDir) != 0)
+			return false;
+		tOut.open(tDir);
 		if (tOut) { // 如果创建成功
-			tOut.close();  // 执行完操作后关闭文件句柄
+			tOut.close();  // 关闭文件
+			return true;
 		}
 		else {
-			//创建失败
+			return false;	//创建失败
 		}
-		return false;
+	}
+}
+
+bool IFileIOBase::SetFileDirectory(const String& directory) {
+	std::string tDir = directory;
+	std::ifstream tIn;
+	tIn.open(tDir);
+	mFileDirectory = directory;
+	if (!tIn) {
+		return NewFile(tDir);
 	}
 	else {
 		return true;
 	}
 }
 
-String IFileIOBase::GetFileDirectory() {
-	return mFileDirectory;
+std::string IFileIOBase::GetFileDirectory() {
+	std::string tFileDirectory = mFileDirectory;
+	return tFileDirectory;
 }
 
 IAsciiFileIOLayer::IAsciiFileIOLayer() {
@@ -60,74 +102,65 @@ JsonCommunicator::~JsonCommunicator() {
 }
 
 const String JsonCommunicator::GetAttributeValue(const String& attribute) {
-	std::filebuf *tPbuf;
+	std::stringstream tPbuf;
 	std::ifstream tFilestr;
-	long long tSize;
-	char *tBuffer;
-	const wchar_t *tLDir = this->GetFileDirectory();
+	std::string tDir = GetFileDirectory();
 	const std::string tAttribute = attribute;
-	tFilestr.open(tLDir);
-	tPbuf = tFilestr.rdbuf();
-	tSize = tPbuf->pubseekoff(0, std::ios::end, std::ios::in);
-	tPbuf->pubseekpos(0, std::ios::in);
-	tBuffer = new char[static_cast <unsigned int>(tSize)];
-	tPbuf->sgetn(tBuffer, tSize);
-	tFilestr.close();
-	Document tDocument;
-	const char *tCBuffer = tBuffer;
-	tDocument.Parse(tCBuffer);
-	if (tDocument.HasMember(tAttribute.c_str())) {
+	tFilestr.open(tDir);
+	tPbuf << tFilestr.rdbuf();
+	if (tPbuf.str().length() > 0) {
+		Document tDocument;
+		std::string tBuffer(tPbuf.str());
+		tDocument.Parse<0>(tBuffer.c_str());
+		if (tDocument.HasParseError())
+			return "";
+		if (!tDocument.HasMember(tAttribute.c_str()))
+			return "";
 		return tDocument[tAttribute.c_str()].GetString();
 	}
 	else {
+		tFilestr.close();
 		return "";
 	}
 }
 
 bool JsonCommunicator::SetAttributeValue(const String& attribute, const String& value) {
-	std::filebuf *tPbuf;
+	std::stringstream tPbuf;
 	std::fstream tFile;
 	std::ifstream tFilestr;
 	std::ofstream tFileout;
-	long long tSize;
-	char *tBuffer;
-	const wchar_t *tLDir = this->GetFileDirectory();
+	std::string tDir = GetFileDirectory();
 	const std::string tAttribute = attribute;
 	const std::string tValue = value;
 	Document tDocument;
-	bool tResult;
-	tFile.open(tLDir);
+	tFile.open(tDir);
 	if (tFile) {
 		tFile.close();
-		tFilestr.open(tLDir);
-		tPbuf = tFilestr.rdbuf();
-		tSize = tPbuf->pubseekoff(0, std::ios::end, std::ios::in);
-		tPbuf->pubseekpos(0, std::ios::in);
-		tBuffer = new char[static_cast <unsigned int>(tSize)];
-		tPbuf->sgetn(tBuffer, tSize);
-		tFilestr.close();
-		const char *tCBuffer = tBuffer;
-		tDocument.Parse(tCBuffer);
-		if (tDocument.HasMember(tAttribute.c_str())) {
-			tResult = true;
-		}
+		tFilestr.open(tDir);
+		tPbuf << tFilestr.rdbuf();
+		std::string tBuffer(tPbuf.str());
+		if (tBuffer.length() == 0)
+			tDocument.SetObject();
 		else {
-			tResult = false;
+			tDocument.Parse<0>(tBuffer.c_str());
+			if (tDocument.HasParseError()) {
+				return false;
+			}
 		}
 	}
 	else {
-		tFile.close();
-		tResult = false;
 		tDocument.SetObject();
+		tFile.close();
 	}
-	tFileout.open(tLDir, std::ios::trunc);
+	tFileout.open(tDir, std::ios::trunc);
 	Document::AllocatorType &tAllocator = tDocument.GetAllocator();
-	tDocument.RemoveMember(tAttribute.c_str());
+	if (tDocument.HasMember(tAttribute.c_str()))
+		tDocument.RemoveMember(tAttribute.c_str());
 	tDocument.AddMember(Value(tAttribute.c_str(), tAllocator), Value(tValue.c_str(), tAllocator), tAllocator);
 	StringBuffer tBuf;
 	PrettyWriter<StringBuffer> tPretty_writer(tBuf);
 	tDocument.Accept(tPretty_writer);
 	tFileout << tBuf.GetString();
 	tFileout.close();
-	return tResult;
+	return true;
 }

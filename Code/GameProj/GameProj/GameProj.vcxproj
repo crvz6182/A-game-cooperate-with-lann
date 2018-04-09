@@ -147,12 +147,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Actor.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="TimeFormatter.h" />
     <ClInclude Include="DirectApplicationBase.h" />
     <ClInclude Include="DirectUtility.h" />
     <ClInclude Include="FileIO.h" />
+    <ClInclude Include="GameApplication.h" />
+    <ClInclude Include="GameWorld.h" />
+    <ClInclude Include="HIDInput.h" />
+    <ClInclude Include="IControllable.h" />
+    <ClInclude Include="IStringPerformable.h" />
+    <ClInclude Include="Log.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="PerformSystem.h" />
     <ClInclude Include="String.h" />
+    <ClInclude Include="TestSquare.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="ThirdParty\rapidjson\allocators.h" />
     <ClInclude Include="ThirdParty\rapidjson\cursorstreamwrapper.h" />
     <ClInclude Include="ThirdParty\rapidjson\document.h" />
@@ -189,6 +200,8 @@
     <ClInclude Include="ThirdParty\rapidjson\stream.h" />
     <ClInclude Include="ThirdParty\rapidjson\stringbuffer.h" />
     <ClInclude Include="ThirdParty\rapidjson\writer.h" />
+    <ClInclude Include="TimeUtility.h" />
+    <ClInclude Include="Transform.h" />
     <ClInclude Include="WindowApplicationBase.h" />
     <ClInclude Include="GameProj.h" />
     <ClInclude Include="stdafx.h" />
@@ -196,12 +209,22 @@
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Config.cpp" />
+    <ClCompile Include="TimeFormatter.cpp" />
     <ClCompile Include="DirectApplicationBase.cpp" />
     <ClCompile Include="DirectUtility.cpp" />
     <ClCompile Include="FileIO.cpp" />
+    <ClCompile Include="GameApplication.cpp" />
+    <ClCompile Include="GameWorld.cpp" />
+    <ClCompile Include="HIDInput.cpp" />
+    <ClCompile Include="Log.cpp" />
     <ClCompile Include="Math.cpp" />
+    <ClCompile Include="PerformSystem.cpp" />
     <ClCompile Include="String.cpp" />
+    <ClCompile Include="TestSquare.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Transform.cpp" />
     <ClCompile Include="WindowApplicationBase.cpp" />
     <ClCompile Include="GameProj.cpp" />
     <ClCompile Include="stdafx.cpp">

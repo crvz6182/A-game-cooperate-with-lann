@@ -2,6 +2,7 @@
 #include "WindowApplicationBase.h"
 #include "Timer.h"
 #include "DirectUtility.h"
+#include "HIDInput.h"
 
 //使用Direct进行硬件加速渲染的窗体程序基类
 //应继承此类并重写纯虚函数后使用
@@ -22,11 +23,11 @@ public:
 	//每次有效循环会调用此函数
 	//更新游戏场景
 	//timeElapsed: 距离上次调用此函数过去了的时间（秒）
-	virtual void Update(TimeSlotInSecond deltaTime);
+	virtual void Update(TimeSlotInSecond deltaTime) = 0;
 
 	//每次有效循环会调用此函数
 	//绘制图像
-	virtual void Draw();
+	virtual void Draw() = 0;
 
 	//当窗体大小被更改时会调用此函数
 	virtual void OnResize() override;
@@ -37,12 +38,13 @@ public:
 	//窗体活动恢复
 	virtual void Resume() override;
 
+	//当前游戏总时长
+	TimeSlotInSecond GetGameTime() const;
+
 protected:
 	//初始化Direct3D
 	bool InitializeDirect();
 
-	//初始化Direct2D
-	bool InitializeDirect2D();
 
 	//获取MSAA质量等级
 	//只会获取一次
@@ -50,7 +52,7 @@ protected:
 	void QueryMsaaQualityLevel();
 
 	virtual void Windowize() override;
-private:
+protected:
 	Timer										mTimer;							//计时器
 
 	ID3D11Device*						mDevice;							//设备
@@ -64,11 +66,6 @@ private:
 	ID3D11DepthStencilView*		mDepthStencilView;		//深度模板视图
 	ID3D11Texture2D*					mDepthStencilBuffer;		//深度模板缓冲区
 
-	ID2D1Factory*							mD2DFactory;					//D2D工厂模式接口
-	ID2D1RenderTarget*				mD2DBackBufferRenderTarget;				//	D2D缓冲区渲染目标
-
-	IDWriteFactory*						mDWriteFactory;				//D2D书写 工厂模式接口
-	IDWriteTextFormat*				mWriteTextFormat;			//D2D书写 写字格式
-	ID2D1SolidColorBrush*			mSolidBrush;					//D2D书写 笔刷
+	VideoSettingConfig					mVideoSettingConfig;		//视频配置
 };
 

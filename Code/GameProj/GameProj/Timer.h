@@ -1,15 +1,10 @@
 #pragma once
 #include <time.h>
 #include <Windows.h>
+#include "TimeUtility.h"
 
-//以秒计时的时间点
-using TimePointInSecond = float;
-//以Count计时的时间点
-using TimePointInCount = time_t;
-//以秒计时的时间段
-using TimeSlotInSecond = float;
-//以Count计时的时间段
-using TimeSlotInCount = time_t;
+
+
 
 //计时器
 class Timer

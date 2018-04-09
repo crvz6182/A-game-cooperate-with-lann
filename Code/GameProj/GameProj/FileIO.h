@@ -3,7 +3,10 @@
 #include "String.h"
 #include <io.h>
 #include <iostream>
+#include <string>
 #include <fstream>
+#include <sstream>
+#include <direct.h> 
 #include "ThirdParty/rapidjson/document.h"
 #include "ThirdParty/rapidjson/prettywriter.h"
 #include "ThirdParty/rapidjson/writer.h"
@@ -24,12 +27,18 @@ public:
 	bool SetFileDirectory(const String& directory);
 
 	//返回保存的文件路径
-	String GetFileDirectory();
+	std::string GetFileDirectory();
+
+	//新建路径
+	static int32_t NewDirectory(const std::string &directoryPath);
+	//新建文件（若路径不存在直接新建路径）
+	static bool NewFile(const std::string &directoryPath);
 	
 private:
 	
 	//文件路径
 	String mFileDirectory;
+
 };
 
 //ASCII文件输入输出层

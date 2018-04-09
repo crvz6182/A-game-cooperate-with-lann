@@ -1,14 +1,9 @@
 #pragma once
 #include <windowsx.h>
+#include "Math.h"
 #include "String.h"
+#include "Config.h"
 
-using Size1D = int;
-
-struct Size2D
-{
-	Size1D Width;
-	Size1D Height;
-};
 
 //窗体程序基类
 //应继承自此类并重写虚函数后使用

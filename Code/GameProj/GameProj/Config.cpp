@@ -18,87 +18,74 @@ VideoSettingConfig::~VideoSettingConfig() {
 }
 
 void VideoSettingConfig::GetConfig() {
-	String tValue_x;
-	tValue_x = mFile.GetAttributeValue("mResolution_x");
-	if (tValue_x.GetLength() == 0) {
-		//无配置文件时初始化
-		mResolution[0] = 1280;
-		mResolution[0] = 768;
+	String tValue;
+	tValue = mFile.GetAttributeValue("Resolution_x");
+	if(IsPositive(tValue))
+		mResolution.Width = (Size1D)tValue.toInt();
+	else
+		mResolution.Width = 1920;
+	tValue = mFile.GetAttributeValue("Resolution_y");
+	if (IsPositive(tValue))
+		mResolution.Height = (Size1D)tValue.toInt();
+	else
+		mResolution.Height = 1080;
+	tValue = mFile.GetAttributeValue("RefreshRate");
+	if (IsPositive(tValue))
+		mRefreshRate = tValue.toInt();
+	else
 		mRefreshRate = 60;
-		mAntiAliasLevel = 2;
-		mIsFullScreen = True_F;
-		mIsAntiAlias = True_A;
+	tValue = mFile.GetAttributeValue("AntiAliasLevel");
+	if (IsAntiAliasLevel(tValue))
+		mAntiAliasLevel = tValue.toInt();
+	else
+		mAntiAliasLevel = 4;
+	tValue = mFile.GetAttributeValue("IsFullScreen");
+	if (IsBool(tValue))
+		mIsFullScreen = tValue.toInt();
+	else
+		mIsFullScreen = true;
+	tValue = mFile.GetAttributeValue("IsAntiAlias");
+	if (IsBool(tValue))
+		mIsAntiAlias = tValue.toInt();
+	else
+		mIsAntiAlias = true;
+	tValue = mFile.GetAttributeValue("AntiAliasType");
+	if (IsBool(tValue))
+		mAntiAliasType = (AntiAliasType)tValue.toInt();
+	else
 		mAntiAliasType = MSAA;
-	}
-	else {
-		mResolution[0] = tValue_x;
-		String tValue_y = mFile.GetAttributeValue("mResolution_y");
-		mResolution[1] = tValue_y;
-		tValue_x = mFile.GetAttributeValue("mRefreshRate");
-		mRefreshRate = tValue_x;
-		tValue_x = mFile.GetAttributeValue("mAntiAliasLevel");
-		mAntiAliasLevel = tValue_x;
-		int tValue;
-		tValue = mFile.GetAttributeValue("mIsFullScreen");
-		if (tValue == 0) {
-			mIsFullScreen = False_F;
-		}
-		else {
-			mIsFullScreen = True_F;
-		}
-		tValue = mFile.GetAttributeValue("mIsAntiAlias");
-		if (tValue == 0) {
-			mIsAntiAlias = False_A;
-		}
-		else {
-			mIsAntiAlias = True_A;
-		}
-		tValue = mFile.GetAttributeValue("mAntiAliasType");
-		if (tValue == 0) {
-			mAntiAliasType = MSAA;
-		}
-		else {
-			mAntiAliasType = FXAA;
-		}
-	}
+	SetConfig();
 }
 
 void VideoSettingConfig::SetConfig() {
-	String tValue = mResolution[0];
-	mFile.SetAttributeValue("mResolution_x", tValue);
-	tValue = mResolution[1];
-	mFile.SetAttributeValue("mResolution_y", tValue);
+	String tValue = mResolution.Width;
+	mFile.SetAttributeValue("Resolution_x", tValue);
+	tValue = mResolution.Height;
+	mFile.SetAttributeValue("Resolution_y", tValue);
 	tValue = mRefreshRate;
-	mFile.SetAttributeValue("mRefreshRate", tValue);
+	mFile.SetAttributeValue("RefreshRate", tValue);
 	tValue = mAntiAliasLevel;
-	mFile.SetAttributeValue("mAntiAliasLevel", tValue);
-	if (mIsFullScreen == 0)
-		tValue = 0;
+	mFile.SetAttributeValue("AntiAliasLevel", tValue);
+	if (mIsFullScreen)
+		tValue = "1";
 	else
-		tValue = 1;
-	mFile.SetAttributeValue("mIsFullScreen", tValue);
-	if (mIsAntiAlias == 0)
-		tValue = 0;
+		tValue = "0";
+	mFile.SetAttributeValue("IsFullScreen", tValue);
+	if (mIsAntiAlias)
+		tValue = "1";
 	else
-		tValue = 1;
-	mFile.SetAttributeValue("mIsAntiAlias", tValue);
-	if (mAntiAliasType == 0)
-		tValue = 0;
-	else
-		tValue = 1;
-	mFile.SetAttributeValue("mAntiAliasType", tValue);
+		tValue = "0";
+	mFile.SetAttributeValue("IsAntiAlias", tValue);
+	tValue = mAntiAliasType;
+	mFile.SetAttributeValue("AntiAliasType", tValue);
 }
 
 Size2D VideoSettingConfig::GetResolution() const{
-	Size2D tRes;
-	tRes.Height = mResolution[0];
-	tRes.Width = mResolution[2];
-	return tRes;
+	return mResolution;
 }
 
 void VideoSettingConfig::SetResolution(Size2D par){
-	mResolution[0] = par.Height;
-	mResolution[1] = par.Width;
+	mResolution = par;
 }
 
 int VideoSettingConfig::GetRefreshRate() const{
@@ -117,19 +104,19 @@ void VideoSettingConfig::SetAntiAliasLevel(int par){
 	mAntiAliasLevel = par;
 }
 
-FullScreenSetting VideoSettingConfig::GetIsFullScreen() const{
+bool VideoSettingConfig::GetIsFullScreen() const{
 	return mIsFullScreen;
 }
 
-void VideoSettingConfig::SetIsFullScreen(FullScreenSetting par){
+void VideoSettingConfig::SetIsFullScreen(bool par){
 	mIsFullScreen = par;
 }
 
-AntiAliasSetting VideoSettingConfig::GetIsAntiAlias() const{
+bool VideoSettingConfig::GetIsAntiAlias() const{
 	return mIsAntiAlias;
 }
 
-void VideoSettingConfig::SetIsAntiAlias(AntiAliasSetting par){
+void VideoSettingConfig::SetIsAntiAlias(bool par){
 	mIsAntiAlias = par;
 }
 
@@ -141,75 +128,55 @@ void VideoSettingConfig::SetAntiAliasType(AntiAliasType par){
 	mAntiAliasType = par;
 }
 
+bool VideoSettingConfig::IsPositive(String value) const {
+	return !(value == "" || value.toInt() <= 0);
+}
+
+bool VideoSettingConfig::IsBool(String value) const {
+	return !(value == "" || !(value == "0" || value == "1"));
+}
+
+bool VideoSettingConfig::IsAntiAliasLevel(String value) const {
+	return !(value == "" || (value.toInt() != 2 && value.toInt() != 4 && value.toInt() != 8));
+}
+
 Array<Size2D> VideoSettingConfig::GetAllResolutions() const {
-	Array<Size2D> list;
-	Size2D tResolution;
-	tResolution.Width = 640;
-	tResolution.Height = 480;
-	list.push(tResolution);
-	tResolution.Width = 800;
-	tResolution.Height = 600;
-	list.push(tResolution);
-	tResolution.Width = 1024;
-	tResolution.Height = 768;
-	list.push(tResolution);
-	tResolution.Width = 1152;
-	tResolution.Height = 864;
-	list.push(tResolution);
-	tResolution.Width = 1280;
-	tResolution.Height = 600;
-	list.push(tResolution);
-	tResolution.Width = 1280;
-	tResolution.Height = 720;
-	list.push(tResolution);
-	tResolution.Width = 1280;
-	tResolution.Height = 768;
-	list.push(tResolution);
-	tResolution.Width = 1280;
-	tResolution.Height = 800;
-	list.push(tResolution);
-	tResolution.Width = 1280;
-	tResolution.Height = 960;
-	list.push(tResolution);
-	tResolution.Width = 1280;
-	tResolution.Height = 1024;
-	list.push(tResolution);
-	tResolution.Width = 1360;
-	tResolution.Height = 768;
-	list.push(tResolution);
-	tResolution.Width = 1366;
-	tResolution.Height = 768;
-	list.push(tResolution);
-	tResolution.Width = 1400;
-	tResolution.Height = 900;
-	list.push(tResolution);
-	tResolution.Width = 1400;
-	tResolution.Height = 1050;
-	list.push(tResolution);
-	tResolution.Width = 1600;
-	tResolution.Height = 900;
-	list.push(tResolution);
-	tResolution.Width = 1680;
-	tResolution.Height = 1050;
-	list.push(tResolution);
-	tResolution.Width = 1920;
-	tResolution.Height = 1080;
-	list.push(tResolution);
+	static Array<Size2D> list = {
+		{640, 480},
+		{800, 600},
+		{1024, 768},
+		{1152, 864},
+		{1280, 600},
+		{1280, 720},
+		{1280, 768},
+		{1280, 800},
+		{1280, 960},
+		{1280, 1024},
+		{1360, 768},
+		{1366, 768},
+		{1400, 900},
+		{1400, 1050},
+		{1600, 900},
+		{1680, 1050},
+		{1920, 1080}
+	};
 	return list;
 }
 
 Array<AntiAliasType> VideoSettingConfig::GetAllAntiAliasType() const {
-	Array<AntiAliasType> list;
-	list.push(MSAA);
-	list.push(FXAA);
+	static Array<AntiAliasType> list{
+		MSAA,
+		FXAA
+	};
 	return list;
 }
 
 Array<int> VideoSettingConfig::GetAllAntiAliasLevel() const {
-	Array<int> list;
-	list.push(2);
-	list.push(4);
-	list.push(8);
+	static Array<int> list{
+		2,
+		4,
+		8
+	};
 	return list;
 }
 

@@ -5,16 +5,6 @@
 #include "FileIO.h"
 #include <string>
 
-enum FullScreenSetting {
-	False_F = 0,
-	True_F = 1
-};
-
-enum AntiAliasSetting {
-	False_A = 0,
-	True_A = 1
-};
-
 enum AntiAliasType {
 	MSAA = 0,
 	FXAA = 1
@@ -48,10 +38,10 @@ public:
 	void SetRefreshRate(int par);
 	int GetAntiAliasLevel() const;
 	void SetAntiAliasLevel(int par);
-	FullScreenSetting GetIsFullScreen() const;
-	void SetIsFullScreen(FullScreenSetting par);
-	AntiAliasSetting GetIsAntiAlias() const;
-	void SetIsAntiAlias(AntiAliasSetting par);
+	bool GetIsFullScreen() const;
+	void SetIsFullScreen(bool par);
+	bool GetIsAntiAlias() const;
+	void SetIsAntiAlias(bool par);
 	AntiAliasType GetAntiAliasType() const;
 	void SetAntiAliasType(AntiAliasType par);
 
@@ -60,13 +50,17 @@ public:
 	Array<AntiAliasType> GetAllAntiAliasType() const;
 	Array<int> GetAllAntiAliasLevel() const;
 
+	//检测设置值是否合法
+	bool IsPositive(String value) const;
+	bool IsBool(String value) const;
+	bool IsAntiAliasLevel(String value) const;
 private:
 	//设置的临时值
-	int mResolution[2];
+	Size2D mResolution;
 	int mRefreshRate;
 	int mAntiAliasLevel;
-	FullScreenSetting mIsFullScreen;
-	AntiAliasSetting mIsAntiAlias;
+	bool mIsFullScreen;
+	bool mIsAntiAlias;
 	AntiAliasType mAntiAliasType;
 
 	//JSON读写类
