@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "TimeFormatter.h"
 
-TimeFormatter::TimeFormatter(TimePointInSecond second, TimePointInMinute minute, TimePointInHour hour) {
+TimeFormatter::TimeFormatter(TimePeriodInSecond second, TimePeriodInMinute minute, TimePeriodInHour hour) {
 	mSecond = second % 60;
 	mMinute = (minute + second / 60) % 60;
 	mHour = hour + (minute + second / 60) / 60;
