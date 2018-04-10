@@ -2,6 +2,8 @@
 #include "Log.h"
 
 bool Log::Print(LogType type, const String &content) {
+	if (mApplication == nullptr)
+		return false;
 	std::ofstream tOut;
 	std::string tContent = content;
 	if(!IFileIOBase::NewFile(DEBUGLOGPATH))
@@ -13,6 +15,6 @@ bool Log::Print(LogType type, const String &content) {
 	return true;
 }
 
-void Log::RegisterDirectApplication(GameApplication *app) {
+void Log::RegisterDirectApplication(DirectApplicationBase *app) {
 	mApplication = app;
 }

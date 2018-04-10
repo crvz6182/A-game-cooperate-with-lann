@@ -2,6 +2,7 @@
 #include "DirectApplicationBase.h"
 
 
+
 DirectApplicationBase::DirectApplicationBase(HINSTANCE hInstance):
 	WindowApplicationBase(hInstance),
 	mTimer(),

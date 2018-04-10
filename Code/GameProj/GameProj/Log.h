@@ -4,11 +4,10 @@
 #include "String.h"
 #include "TimeFormatter.h"
 #include "FileIO.h"
-#include "GameApplication.h"
+#include "DirectApplicationBase.h"
 
-#define DEBUGLOGPATH "\\tLog\\DebugLog.txt"
 
-class GameApplication;
+constexpr char DEBUGLOGPATH[] = "\\tLog\\DebugLog.txt";
 
 enum LogType{
 	LOG_DEBUG = 0,
@@ -18,9 +17,9 @@ enum LogType{
 class Log {
 public:
 	static bool Print(LogType type,const String &content);
-	static void RegisterDirectApplication(GameApplication *app);
+	static void RegisterDirectApplication(DirectApplicationBase *app);
 private:
-	static GameApplication *mApplication;
+	static DirectApplicationBase *mApplication;
 };
 
 
