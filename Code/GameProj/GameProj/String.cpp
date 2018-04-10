@@ -81,7 +81,7 @@ const bool String::operator!=(const String & rhs) const
 
 const Count String::GetLength() const
 {
-	return mContent.length();
+	return (Count)mContent.length();
 }
 
 const int String::toInt() const

@@ -45,7 +45,7 @@ int WindowApplicationBase::RunApplication()
 			DispatchMessage(&msg);
 		}
 	}
-	return msg.wParam;
+	return (int)msg.wParam;
 }
 
 void WindowApplicationBase::Quit()

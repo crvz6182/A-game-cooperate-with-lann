@@ -44,19 +44,19 @@ void TestSquare::ReceiveBehaviour(const InputInformations & strs)
 {
 	for (auto pair : strs) {
 		if (pair.GetFirst() == "MoveRight") {
-			MoveRight(pair.GetSecond());
+			//MoveRight(pair.GetSecond());
 		}
 		
 		if (pair.GetFirst() == "MoveLeft") {
-			MoveRight(-pair.GetSecond());
+			//MoveRight(-pair.GetSecond());
 		}
 
 		if (pair.GetFirst() == "MoveUp") {
-			MoveUp(pair.GetSecond());
+			//MoveUp(pair.GetSecond());
 		}
 
 		if (pair.GetFirst() == "MoveDown") {
-			MoveUp(-pair.GetSecond());
+			//MoveUp(-pair.GetSecond());
 		}
 	}
 }

@@ -73,7 +73,7 @@ int DirectApplicationBase::RunApplication()
 			Draw();
 		}
 	}
-	return msg.wParam;
+	return (int)msg.wParam;
 }
 
 void DirectApplicationBase::OnResize()
