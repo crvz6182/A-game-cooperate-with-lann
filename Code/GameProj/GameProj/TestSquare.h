@@ -1,14 +1,13 @@
 #pragma once
 #include "Actor.h"
-#include "IControllable.h"
 #include "HIDInput.h"
 #include "Texture.h"
 #include "Transform.h"
 #include "GameWorld.h"
+#include "Log.h"
 
 class TestSquare :
-	public Actor,
-	public IControllable
+	public Actor
 {
 public:
 	TestSquare();
@@ -20,11 +19,9 @@ public:
 
 	virtual void Draw(ID2D1RenderTarget* renderTarget) const override;
 
-	virtual void ReceiveBehaviour(const InputInformations& strs) override;
+	void MoveRightAxis(Percent percent);
 
-	void MoveRight(Percent percent);
-
-	void MoveUp(Percent percent);
+	void MoveRight();
 private:
 	HIDInput*				mInput;
 	RectangleTexture*	mTexture;

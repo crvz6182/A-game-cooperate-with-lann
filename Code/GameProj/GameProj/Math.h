@@ -63,6 +63,20 @@ public:
 	{
 		return mPair.second;
 	}
+
+	const bool operator<(const Pair& rhs) const
+	{
+		if (GetFirst() < rhs.GetFirst()) {
+			return true;
+		}
+		if (rhs.GetFirst() < GetFirst()) {
+			return false;
+		}
+		if (GetSecond() != rhs.GetSecond()) {
+			BreakPoint();
+		}
+		return GetSecond() < rhs.GetSecond();
+	}
 private:
 	std::pair<T1, T2> mPair;
 };
@@ -112,14 +126,24 @@ template<typename TKey, typename TValue>
 class Dictionary
 {
 public:
+	//创建一对字典键值
 	void Create(const TKey& key, const TValue& value)
 	{
 		mMap[key] = value;
 	}
-
+	//修改一对字典键值
 	void Modify(const TKey& key, const TValue& value)
 	{
 		mMap[key] = value;
+	}
+
+	TValue* Get(const TKey& key)
+	{
+		auto result = mMap.find(key);
+		if (result == mMap.cend()) {
+			return nullptr;
+		}
+		return &(result->second);
 	}
 private:
 	std::map<TKey, TValue> mMap;

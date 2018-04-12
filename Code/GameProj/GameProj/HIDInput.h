@@ -1,6 +1,9 @@
 #pragma once
 #include "DirectUtility.h"
+#include <functional>
 #include "Actor.h"
+
+#define BindAction(str, state, func) BindActionBehaviour(str, state, std::bind(func, this))
 
 constexpr UINT KEYBOARD_SIZE = 256;
 
@@ -14,12 +17,14 @@ enum ActionState
 	ACTION_SIZE
 };
 
-using KeyboardState = ArrayFixed<char, KEYBOARD_SIZE>;
-using KeyboardAction = ArrayFixed<ActionState, KEYBOARD_SIZE>;
+using KeyboardState = ArrayFixed<char, KEYBOARD_SIZE>;		//按键当前状态
+using KeyboardAction = ArrayFixed<ActionState, KEYBOARD_SIZE>;		//按键当前行为
 
-using KeyToBehavior = ArrayFixed<String, KEYBOARD_SIZE>;		//按键映射到字符串
-using InputInformations = Array<Pair<String, Percent>>;		//输入信息
+using KeyToString = ArrayFixed<String, KEYBOARD_SIZE>;		//按键映射到字符串
 
+using ActionBehavior = void(*)();
+
+using StringToAction = Dictionary<Pair<String, ActionState>, std::function<void()>>;
 
 //人体工程学设备输入类
 class HIDInput
@@ -32,16 +37,14 @@ public:
 	//销毁单例
 	static void DestroyHIDInput();
 
-	//询问当前所有输入
-	bool QueryInputs();
-
-	InputInformations GetBehaviours();
-
-	//获取当前键盘按键状态
-	bool GetKeyState(DWORD macroKeys_DIK_);
+	//询问当前所有输入，并进行回调
+	bool QueryInputsThenCallBack();
 
 	//初始化
 	bool Initialize(HINSTANCE hInstance, HWND hWindow);
+
+	//将方法绑定到Action字符串
+	void BindActionBehaviour(const String & str, ActionState actionState, std::function<void()> func);
 
 	//释放
 	ULONG Release();
@@ -51,7 +54,14 @@ private:
 	//获取指定设备的输入到指定大小的指定缓冲区
 	bool QueryDevice(LPDIRECTINPUTDEVICE8& inputDevice, LPVOID stateBuffer, DWORD bufferSize);
 
+	//获取当前键盘按键状态
+	bool GetKeyState(DWORD macroKeys_DIK_);
+
+	//将按键绑定到字符串
 	void BindKey(DWORD macroKey_DIK_, const String& str);
+
+	//键盘命令回调
+	void KeyboardCallBack();
 private:
 	IDirectInput8*							mInput;							//D3D输入层
 	LPDIRECTINPUTDEVICE8			mKeyboardInput;			//键盘输入
@@ -59,10 +69,10 @@ private:
 
 	DIMOUSESTATE						mMouseState;					//鼠标状态
 	KeyboardState							mKeyboardState;				//键盘本次状态
-	KeyboardState							mPreviousState;				//键盘上次状态
+	KeyboardState							mKeyboardPreviousState;				//键盘上次状态
 	KeyboardAction						mKeyboardAction;			//键盘行为
 
-	KeyToBehavior						mKeyMap;						//按键映射到动作字符串
+	KeyToString								mKeyMap;						//按键映射到动作字符串
 
-	InputInformations					mInformations;				//用户输入信息
+	StringToAction						mActionMap;
 };

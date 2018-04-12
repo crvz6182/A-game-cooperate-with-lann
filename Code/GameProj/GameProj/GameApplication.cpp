@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "GameApplication.h"
 
-
 GameApplication::GameApplication(HINSTANCE hInstance):
 	DirectApplicationBase(hInstance),
 	mD2DBackBufferRenderTarget(nullptr),
@@ -46,7 +45,7 @@ bool GameApplication::Initialize()
 
 void GameApplication::Update(TimeSlotInSecond deltaSecond)
 {
-	mInput->QueryInputs();
+	mInput->QueryInputsThenCallBack();
 	mWorld->Update(deltaSecond);
 }
 
@@ -70,10 +69,15 @@ void GameApplication::Draw()
 		//¿ªÊ¼»æÍ¼
 		mD2DBackBufferRenderTarget->BeginDraw();
 		D2D1_RECT_F rectRegion = D2D1::RectF(
-			0., 0., 40., 20.
+			0., 0., 100., 20.
 		);
 
-		mD2DBackBufferRenderTarget->DrawText(String((int)(1 / mTimer.GetDeltaTime())), 4, mWriteTextFormat, rectRegion, mSolidBrush);
+		String tTPF = mTimer.GetDeltaTime();
+		String tFPS = (int)(1.0f / mTimer.GetDeltaTime());
+
+		String tStringRender = tFPS + "        " + tTPF;
+
+		mD2DBackBufferRenderTarget->DrawText(tStringRender, tStringRender.GetLength(), mWriteTextFormat, rectRegion, mSolidBrush);
 		
 		mWorld->Perform();
 

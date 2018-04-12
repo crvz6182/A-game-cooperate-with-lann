@@ -22,7 +22,7 @@ void HIDInput::DestroyHIDInput()
 	delete gHIDInput;
 }
 
-bool HIDInput::QueryInputs()
+bool HIDInput::QueryInputsThenCallBack()
 {
 	if (!QueryDevice(mKeyboardInput, mKeyboardState.GetPointer(), sizeof(mKeyboardState))) {
 		return false;
@@ -30,25 +30,10 @@ bool HIDInput::QueryInputs()
 	if (!QueryDevice(mMouseInput, &mMouseState, sizeof(mMouseState))) {
 		return false;
 	}
+
+	KeyboardCallBack();
+
 	return true;
-}
-
-InputInformations HIDInput::GetBehaviours()
-{
-	mInformations.Clear();
-	for (DWORD i = 0; i < KEYBOARD_SIZE; ++i) {
-		mKeyboardAction[i] = (ActionState)(((mPreviousState[i] & 0x80) >> 7) | ((mKeyboardState[i] & 0x80) >> 6));
-
-		String tActionName = mKeyMap[i];
-		if (tActionName != String(L"")) {
-			if (mKeyboardAction[i] != ActionState::Idle && mKeyboardAction[i] != ActionState::Hold) {
-				mInformations.Append({ tActionName, (Percent)mKeyboardAction[i] });
-			}
-		}
-	}
-
-	mPreviousState = mKeyboardState;
-	return mInformations;
 }
 
 bool HIDInput::GetKeyState(DWORD macroKeys_DIK_)
@@ -70,7 +55,7 @@ bool HIDInput::Initialize(HINSTANCE hInstance, HWND hWindow)
 	HR(mMouseInput->SetCooperativeLevel(hWindow, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE));
 
 	ZeroInitialize(mKeyboardState);
-	ZeroInitialize(mPreviousState);
+	ZeroInitialize(mKeyboardPreviousState);
 	ZeroInitialize(mMouseState);
 
 	//×Ô¶¨Òå
@@ -80,6 +65,11 @@ bool HIDInput::Initialize(HINSTANCE hInstance, HWND hWindow)
 	BindKey(DIK_S, "MoveDown");
 
 	return true;
+}
+
+void HIDInput::BindActionBehaviour(const String & str, ActionState actionState, std::function<void()> func)
+{
+	mActionMap.Create({ str, actionState }, func);
 }
 
 ULONG HIDInput::Release()
@@ -120,4 +110,19 @@ bool HIDInput::QueryDevice(LPDIRECTINPUTDEVICE8 & inputDevice, LPVOID stateBuffe
 void HIDInput::BindKey(DWORD macroKey_DIK_, const String & str)
 {
 	mKeyMap[macroKey_DIK_] = str;
+}
+
+void HIDInput::KeyboardCallBack()
+{
+	for (Index i = 0; i < KEYBOARD_SIZE; ++i) {
+		mKeyboardAction[i] = (ActionState)(((mKeyboardPreviousState[i] != 0) << 1) | (mKeyboardState[i] != 0));
+		if (mKeyMap[i] == "") {
+			continue;
+		}
+		auto callbackFunction = mActionMap.Get({ mKeyMap[i], mKeyboardAction[i] });
+		if (callbackFunction != nullptr) {
+			(*callbackFunction)();
+		}
+	}
+	mKeyboardPreviousState = mKeyboardState;
 }

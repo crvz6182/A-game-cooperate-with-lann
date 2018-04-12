@@ -77,10 +77,10 @@
       <UniqueIdentifier>{28c25eed-f26a-4fe2-b3d1-033c86df6624}</UniqueIdentifier>
     </Filter>
     <Filter Include="头文件\Framework\FunctionalLibrary\Time">
-      <UniqueIdentifier>{bddab04c-976d-4628-8aa8-fc47df42a10d}</UniqueIdentifier>
+      <UniqueIdentifier>{71a95aa7-a708-4e9c-98ab-98c6f63d7696}</UniqueIdentifier>
     </Filter>
     <Filter Include="源文件\Framework\FunctionalLibrary\Time">
-      <UniqueIdentifier>{e1b5cecf-c866-4845-b908-9b335f8e54e9}</UniqueIdentifier>
+      <UniqueIdentifier>{c4cf041c-f8ed-4a75-b247-6636949a9120}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -249,16 +249,13 @@
     <ClInclude Include="Config.h">
       <Filter>头文件\Framework\FunctionalLibrary</Filter>
     </ClInclude>
-    <ClInclude Include="IControllable.h">
-      <Filter>头文件\Framework\GameWorld\Objects</Filter>
+    <ClInclude Include="TimeUtility.h">
+      <Filter>头文件\Framework\FunctionalLibrary\Time</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>头文件\Framework\FunctionalLibrary\Time</Filter>
     </ClInclude>
     <ClInclude Include="TimeFormatter.h">
-      <Filter>头文件\Framework\FunctionalLibrary\Time</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeUtility.h">
       <Filter>头文件\Framework\FunctionalLibrary\Time</Filter>
     </ClInclude>
     <ClInclude Include="Log.h">

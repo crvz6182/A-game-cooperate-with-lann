@@ -74,6 +74,15 @@ const bool String::operator==(const String& rhs) const
 	return mContent.compare(rhs.mContent) == 0;
 }
 
+const bool String::operator!=(const String & rhs) const
+{
+	return !operator==(rhs);
+}
+
+const bool String::operator<(const String & rhs) const
+{
+	return mContent < rhs.mContent;
+}
 
 std::ostream& operator<<(std::ostream& output, const String& rhs) {
 	std::string tRhs = rhs;
@@ -83,7 +92,7 @@ std::ostream& operator<<(std::ostream& output, const String& rhs) {
 
 const Count String::GetLength() const
 {
-	return mContent.length();
+	return (Count)mContent.length();
 }
 
 const int String::toInt() const

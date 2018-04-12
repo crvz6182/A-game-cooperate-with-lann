@@ -155,7 +155,6 @@
     <ClInclude Include="GameApplication.h" />
     <ClInclude Include="GameWorld.h" />
     <ClInclude Include="HIDInput.h" />
-    <ClInclude Include="IControllable.h" />
     <ClInclude Include="IStringPerformable.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Math.h" />
