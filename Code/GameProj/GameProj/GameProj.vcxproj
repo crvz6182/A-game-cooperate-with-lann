@@ -157,6 +157,7 @@
     <ClInclude Include="HIDInput.h" />
     <ClInclude Include="IControllable.h" />
     <ClInclude Include="IStringPerformable.h" />
+    <ClInclude Include="Log.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="PerformSystem.h" />
     <ClInclude Include="String.h" />
@@ -198,6 +199,8 @@
     <ClInclude Include="ThirdParty\rapidjson\stream.h" />
     <ClInclude Include="ThirdParty\rapidjson\stringbuffer.h" />
     <ClInclude Include="ThirdParty\rapidjson\writer.h" />
+    <ClInclude Include="TimeFormatter.h" />
+    <ClInclude Include="TimeUtility.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="WindowApplicationBase.h" />
     <ClInclude Include="GameProj.h" />
@@ -214,11 +217,13 @@
     <ClCompile Include="GameApplication.cpp" />
     <ClCompile Include="GameWorld.cpp" />
     <ClCompile Include="HIDInput.cpp" />
+    <ClCompile Include="Log.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="PerformSystem.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="TestSquare.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TimeFormatter.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="WindowApplicationBase.cpp" />
     <ClCompile Include="GameProj.cpp" />

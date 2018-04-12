@@ -76,6 +76,12 @@
     <Filter Include="源文件\Framework\GameWorld\Objects">
       <UniqueIdentifier>{28c25eed-f26a-4fe2-b3d1-033c86df6624}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Framework\FunctionalLibrary\Time">
+      <UniqueIdentifier>{bddab04c-976d-4628-8aa8-fc47df42a10d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Framework\FunctionalLibrary\Time">
+      <UniqueIdentifier>{e1b5cecf-c866-4845-b908-9b335f8e54e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -210,9 +216,6 @@
     <ClInclude Include="HIDInput.h">
       <Filter>头文件\Framework\Direct</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>头文件\Framework\FunctionalLibrary</Filter>
-    </ClInclude>
     <ClInclude Include="String.h">
       <Filter>头文件\Framework\FunctionalLibrary</Filter>
     </ClInclude>
@@ -249,6 +252,18 @@
     <ClInclude Include="IControllable.h">
       <Filter>头文件\Framework\GameWorld\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>头文件\Framework\FunctionalLibrary\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeFormatter.h">
+      <Filter>头文件\Framework\FunctionalLibrary\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeUtility.h">
+      <Filter>头文件\Framework\FunctionalLibrary\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>头文件\Framework\FunctionalLibrary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -273,9 +288,6 @@
       <Filter>源文件\Framework\Direct</Filter>
     </ClCompile>
     <ClCompile Include="String.cpp">
-      <Filter>源文件\Framework\FunctionalLibrary</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
       <Filter>源文件\Framework\FunctionalLibrary</Filter>
     </ClCompile>
     <ClCompile Include="FileIO.cpp">
@@ -303,6 +315,15 @@
       <Filter>源文件\Math</Filter>
     </ClCompile>
     <ClCompile Include="Config.cpp">
+      <Filter>源文件\Framework\FunctionalLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>源文件\Framework\FunctionalLibrary\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeFormatter.cpp">
+      <Filter>源文件\Framework\FunctionalLibrary\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
       <Filter>源文件\Framework\FunctionalLibrary</Filter>
     </ClCompile>
   </ItemGroup>

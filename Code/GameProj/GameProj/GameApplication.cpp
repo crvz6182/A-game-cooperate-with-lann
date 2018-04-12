@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameApplication.h"
 
+
 GameApplication::GameApplication(HINSTANCE hInstance):
 	DirectApplicationBase(hInstance),
 	mD2DBackBufferRenderTarget(nullptr),
@@ -39,6 +40,7 @@ bool GameApplication::Initialize()
 	if (!mWorld->Initialize(mD2DBackBufferRenderTarget)) {
 		return false;
 	}
+	Log::RegisterDirectApplication(this);
 	return true;
 }
 

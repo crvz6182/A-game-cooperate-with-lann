@@ -30,7 +30,9 @@ public:
 	std::string GetFileDirectory();
 
 	//新建路径
-	int32_t createDirectory(const std::string &directoryPath);
+	static int32_t NewDirectory(const std::string &directoryPath);
+	//新建文件（若路径不存在直接新建路径）
+	static bool NewFile(const std::string &directoryPath);
 	
 private:
 	

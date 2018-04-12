@@ -74,14 +74,16 @@ const bool String::operator==(const String& rhs) const
 	return mContent.compare(rhs.mContent) == 0;
 }
 
-const bool String::operator!=(const String & rhs) const
-{
-	return !operator==(rhs);
+
+std::ostream& operator<<(std::ostream& output, const String& rhs) {
+	std::string tRhs = rhs;
+	output << tRhs;
+	return output;
 }
 
 const Count String::GetLength() const
 {
-	return (Count)mContent.length();
+	return mContent.length();
 }
 
 const int String::toInt() const

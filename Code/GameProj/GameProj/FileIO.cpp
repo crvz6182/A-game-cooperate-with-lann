@@ -12,7 +12,7 @@ IFileIOBase::~IFileIOBase() {
 
 }
 
-int32_t IFileIOBase::createDirectory(const std::string &directoryPath)	//´ÓÍøÉÏ³­µÄ
+int32_t IFileIOBase::NewDirectory(const std::string &directoryPath)	//´ÓÍøÉÏ³­µÄ
 {
 	uint32_t dirPathLen = directoryPath.length();
 	if (dirPathLen > MAX_PATH_LEN)
@@ -38,29 +38,34 @@ int32_t IFileIOBase::createDirectory(const std::string &directoryPath)	//´ÓÍøÉÏ³
 	return 0;
 }
 
+bool IFileIOBase::NewFile(const std::string &tDir) {
+	std::ofstream tOut;
+	tOut.open(tDir, std::ios::app);
+	if (tOut) { // Èç¹û´´½¨³É¹¦
+		tOut.close();  // ¹Ø±ÕÎÄ¼þ
+		return true;
+	}
+	else {
+		if (NewDirectory(tDir) != 0)
+			return false;
+		tOut.open(tDir, std::ios::app);
+		if (tOut) { // Èç¹û´´½¨³É¹¦
+			tOut.close();  // ¹Ø±ÕÎÄ¼þ
+			return true;
+		}
+		else {
+			return false;	//´´½¨Ê§°Ü
+		}
+	}
+}
+
 bool IFileIOBase::SetFileDirectory(const String& directory) {
 	std::string tDir = directory;
 	std::ifstream tIn;
 	tIn.open(tDir);
 	mFileDirectory = directory;
 	if (!tIn) {
-		std::ofstream tOut;
-		tOut.open(tDir);
-		if (tOut) { // Èç¹û´´½¨³É¹¦
-			tOut.close();  // ¹Ø±ÕÎÄ¼þ
-			return true;
-		}
-		else {
-			createDirectory(tDir);
-			tOut.open(tDir);
-			if (tOut) { // Èç¹û´´½¨³É¹¦
-				tOut.close();  // ¹Ø±ÕÎÄ¼þ
-				return true;
-			}
-			else {
-				return false;	//´´½¨Ê§°Ü
-			}
-		}
+		return NewFile(tDir);
 	}
 	else {
 		return true;

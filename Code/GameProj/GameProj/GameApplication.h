@@ -2,6 +2,7 @@
 #include "DirectApplicationBase.h"
 #include "GameWorld.h"
 
+#include "Log.h"
 class GameApplication : public DirectApplicationBase
 {
 public:
