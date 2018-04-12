@@ -153,6 +153,11 @@ void DirectApplicationBase::Resume()
 	mTimer.ResumeTimer();
 }
 
+TimeSlotInSecond DirectApplicationBase::GetGameTime() const
+{
+	return mTimer.GetTotalValidTime();
+}
+
 bool DirectApplicationBase::InitializeDirect()
 {
 	UINT createDeviceFlag = D3D10_CREATE_DEVICE_BGRA_SUPPORT;

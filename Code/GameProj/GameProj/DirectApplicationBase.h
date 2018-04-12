@@ -38,6 +38,9 @@ public:
 	//窗体活动恢复
 	virtual void Resume() override;
 
+	//获取游戏总时长
+	virtual TimeSlotInSecond GetGameTime() const;
+
 protected:
 	//初始化Direct3D
 	bool InitializeDirect();
