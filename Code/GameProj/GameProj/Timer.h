@@ -34,9 +34,9 @@ private:
 	TimePointInCount		mStartCount;						//开始计时时的时间点
 	TimePointInCount		mPreviousCount;					//上次有效计时得到的时间点
 	TimePointInCount		mCurrentCount;					//当前有效计时得到的时间点
-	
+
 	TimePointInCount		mPauseCount;						//上次调用暂停时的时间点
-	
+
 	TimeSlotInCount			mPausedSlotCount;				//一共暂停了多久
 	bool								mPausing;							//当前是否在暂停状态
 };

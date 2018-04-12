@@ -2,7 +2,7 @@
 #include "Timer.h"
 
 
-Timer::Timer():
+Timer::Timer() :
 	mStartCount(0),
 	mPreviousCount(0),
 	mCurrentCount(0),

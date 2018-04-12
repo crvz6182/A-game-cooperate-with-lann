@@ -6,7 +6,8 @@
 #include "FileIO.h"
 #include "DirectApplicationBase.h"
 
-constexpr char DEBUGLOGPATH[] = "\\tLog\\DebugLog.txt";
+
+constexpr char DEBUGLOGPATH[] = ".\\tLog\\DebugLog.txt";
 
 enum LogType{
 	LOG_DEBUG = 0,
@@ -20,3 +21,6 @@ public:
 private:
 	static DirectApplicationBase *mApplication;
 };
+
+
+

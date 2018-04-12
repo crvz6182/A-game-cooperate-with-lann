@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GameApplication.h"
 
-GameApplication::GameApplication(HINSTANCE hInstance):
+GameApplication::GameApplication(HINSTANCE hInstance) :
 	DirectApplicationBase(hInstance),
 	mD2DBackBufferRenderTarget(nullptr),
 	mD2DFactory(nullptr),
@@ -73,7 +73,7 @@ void GameApplication::Draw()
 		);
 
 		mD2DBackBufferRenderTarget->DrawText(String((int)(1 / mTimer.GetDeltaTime())), 4, mWriteTextFormat, rectRegion, mSolidBrush);
-		
+
 		mWorld->Perform();
 
 		//½áÊø»æÍ¼

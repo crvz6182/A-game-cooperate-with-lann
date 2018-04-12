@@ -6,11 +6,11 @@
 
 class TimeFormatter :public IStringPerformable {
 public:
-	TimeFormatter(TimePeriodInSecond second = 0, TimePeriodInMinute minute = 0, TimePeriodInHour hour = 0);
+	TimeFormatter(TimeSpotInSecond second = 0, TimeSpotInMinute minute = 0, TimeSpotInHour hour = 0);
 	~TimeFormatter();
 	virtual String ToString() const override;
 private:
-	TimePeriodInSecond mSecond;
-	TimePeriodInMinute mMinute;
-	TimePeriodInHour mHour;
+	TimeSpotInSecond mSecond;
+	TimeSpotInMinute mMinute;
+	TimeSpotInHour mHour;
 };

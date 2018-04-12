@@ -40,7 +40,7 @@ int32_t IFileIOBase::NewDirectory(const std::string &directoryPath)	//从网上抄的
 
 bool IFileIOBase::NewFile(const std::string &tDir) {
 	std::ofstream tOut;
-	tOut.open(tDir);
+	tOut.open(tDir, std::ios::app);
 	if (tOut) { // 如果创建成功
 		tOut.close();  // 关闭文件
 		return true;
@@ -48,7 +48,7 @@ bool IFileIOBase::NewFile(const std::string &tDir) {
 	else {
 		if (NewDirectory(tDir) != 0)
 			return false;
-		tOut.open(tDir);
+		tOut.open(tDir, std::ios::app);
 		if (tOut) { // 如果创建成功
 			tOut.close();  // 关闭文件
 			return true;

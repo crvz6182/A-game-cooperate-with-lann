@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "TestSquare.h"
+#include "Log.h"
 
 
 TestSquare::TestSquare():
