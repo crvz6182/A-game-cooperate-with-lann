@@ -2,6 +2,7 @@
 #include <vector>
 #include <map>
 #include <initializer_list>
+#include <DirectXMath.h>
 
 using Index = unsigned int;
 using Count = unsigned int;
@@ -42,6 +43,7 @@ struct Point2D {
 	}
 
 };
+using Direction2D = Point2D;
 
 inline void BreakPoint()
 {
@@ -100,7 +102,7 @@ public:
 
 	const Count GetLength() const
 	{
-		return mVector.size();
+		return (Count)mVector.size();
 	}
 
 	T& operator[](Index ind)
@@ -135,6 +137,11 @@ public:
 	void Modify(const TKey& key, const TValue& value)
 	{
 		mMap[key] = value;
+	}
+
+	auto& operator[](Index i)
+	{
+		return mMap[i];
 	}
 
 	TValue* Get(const TKey& key)

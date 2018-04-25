@@ -1,0 +1,17 @@
+0h 0m 0s:MoveRight
+0h 0m 4s:MoveRight
+0h 0m 4s:MoveRight
+0h 0m 4s:MoveRight
+0h 0m 5s:MoveRight
+0h 0m 5s:MoveRight
+0h 0m 5s:MoveRight
+0h 0m 5s:MoveRight
+0h 0m 6s:MoveRight
+0h 0m 6s:MoveRight
+0h 0m 6s:MoveRight
+0h 0m 6s:MoveRight
+0h 0m 7s:MoveRight
+0h 0m 7s:MoveRight
+0h 0m 7s:MoveRight
+0h 0m 7s:MoveRight
+0h 0m 7s:MoveRight

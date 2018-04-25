@@ -82,6 +82,12 @@
     <Filter Include="源文件\Framework\FunctionalLibrary\Time">
       <UniqueIdentifier>{c4cf041c-f8ed-4a75-b247-6636949a9120}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Framework\GameWorld\ECS">
+      <UniqueIdentifier>{35ea5526-02ea-40ee-b0cf-59dd0cb1ef69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Framework\GameWorld\ECS">
+      <UniqueIdentifier>{ff9e78ca-8d4d-4461-8338-a134545306d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -225,12 +231,6 @@
     <ClInclude Include="GameWorld.h">
       <Filter>头文件\Framework\GameWorld</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>头文件\Framework\FunctionalLibrary</Filter>
-    </ClInclude>
-    <ClInclude Include="PerformSystem.h">
-      <Filter>头文件\Framework\GameWorld</Filter>
-    </ClInclude>
     <ClInclude Include="IStringPerformable.h">
       <Filter>头文件\Interfaces</Filter>
     </ClInclude>
@@ -239,9 +239,6 @@
     </ClInclude>
     <ClInclude Include="Actor.h">
       <Filter>头文件\Framework\GameWorld\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="TestSquare.h">
-      <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>头文件\Math</Filter>
@@ -260,6 +257,21 @@
     </ClInclude>
     <ClInclude Include="Log.h">
       <Filter>头文件\Framework\FunctionalLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>头文件\Framework\GameWorld\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="System.h">
+      <Filter>头文件\Framework\GameWorld\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>头文件\Framework\GameWorld\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityManager.h">
+      <Filter>头文件\Framework\GameWorld\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="ECSUtil.h">
+      <Filter>头文件\Framework\GameWorld\ECS</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -293,20 +305,11 @@
     <ClCompile Include="GameWorld.cpp">
       <Filter>源文件\Framework\GameWorld</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>源文件\Framework\FunctionalLibrary</Filter>
-    </ClCompile>
-    <ClCompile Include="PerformSystem.cpp">
-      <Filter>源文件\Framework\GameWorld</Filter>
-    </ClCompile>
     <ClCompile Include="GameApplication.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Actor.cpp">
       <Filter>源文件\Framework\GameWorld\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="TestSquare.cpp">
-      <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
       <Filter>源文件\Math</Filter>
@@ -322,6 +325,18 @@
     </ClCompile>
     <ClCompile Include="Log.cpp">
       <Filter>源文件\Framework\FunctionalLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>源文件\Framework\GameWorld\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="System.cpp">
+      <Filter>源文件\Framework\GameWorld\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>源文件\Framework\GameWorld\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityManager.cpp">
+      <Filter>源文件\Framework\GameWorld\ECS</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,7 +2,6 @@
 #include "WindowApplicationBase.h"
 #include "Timer.h"
 #include "DirectUtility.h"
-#include "HIDInput.h"
 
 //使用Direct进行硬件加速渲染的窗体程序基类
 //应继承此类并重写纯虚函数后使用

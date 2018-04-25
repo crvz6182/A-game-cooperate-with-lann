@@ -25,7 +25,6 @@ DirectApplicationBase::~DirectApplicationBase()
 
 	ReleaseCOM(mDepthStencilBuffer);
 
-	HIDInput::DestroyHIDInput();
 
 	//复位所有默认设置
 	if (mImmediateContext) {
@@ -91,7 +90,7 @@ void DirectApplicationBase::OnResize()
 
 	//重新缩放渲染对象视图
 
-	HR(mSwapChain->ResizeBuffers(1, (UINT)mVideoSettingConfig.GetResolution().Width, (UINT)mVideoSettingConfig.GetResolution().Height, DXGI_FORMAT_R8G8B8A8_UNORM, 0));
+	HR(mSwapChain->ResizeBuffers(1, (UINT)mVideoSettingConfig.GetResolution().Width, (UINT)mVideoSettingConfig.GetResolution().Height, DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH));
 	ID3D11Texture2D* backBuffer;
 	HR(mSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&backBuffer)));
 	HR(mDevice->CreateRenderTargetView(backBuffer, 0, &mRenderTargetView));
