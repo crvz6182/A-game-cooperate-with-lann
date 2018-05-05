@@ -37,7 +37,7 @@ void GameApplication::Update(TimeSlotInSecond deltaSecond)
 	mGameWorld->Update(deltaSecond);
 }
 
-void GameApplication::Draw()
+/*void GameApplication::Draw()
 {
 	//指定背景色清空渲染对象视图
 	float r = 0.0f;
@@ -54,7 +54,7 @@ void GameApplication::Draw()
 
 	//Sleep(16);
 	mSwapChain->Present(0, 0);
-}
+}*/
 
 void GameApplication::OnResize()
 {

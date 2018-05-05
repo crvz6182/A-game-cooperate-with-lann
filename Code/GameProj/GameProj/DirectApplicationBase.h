@@ -9,6 +9,7 @@ class DirectApplicationBase :
 	public WindowApplicationBase
 {
 public:
+
 	DirectApplicationBase(HINSTANCE hInstance);
 	virtual ~DirectApplicationBase();
 
@@ -26,7 +27,7 @@ public:
 
 	//每次有效循环会调用此函数
 	//绘制图像
-	virtual void Draw() = 0;
+	//virtual void Draw() = 0;
 
 	//当窗体大小被更改时会调用此函数
 	virtual void OnResize() override;
@@ -50,19 +51,22 @@ protected:
 	//如果想重新获取，则将mMsaaQualityLevels改为-1
 	void QueryMsaaQualityLevel();
 
+	//当被窗体化时调用
 	virtual void Windowize() override;
 protected:
+
 	Timer										mTimer;							//计时器
 
-	ID3D11Device*						mDevice;							//设备
+	/*ID3D11Device*						mDevice;							//设备
 	ID3D11DeviceContext*			mImmediateContext;		//设备环境
 
-	IDXGISwapChain*					mSwapChain;					//交换链
+	IDXGISwapChain*					mSwapChain;					//交换链*/
 
 	UINT										mMsaaQualityLevels;		//MSAA抗锯齿质量等级
 
-	ID3D11RenderTargetView*		mRenderTargetView;		//渲染对象视图
-	ID3D11DepthStencilView*		mDepthStencilView;		//深度模板视图
+	/*ID3D11RenderTargetView*		mRenderTargetView;		//渲染对象视图
+	ID3D11DepthStencilView*		mDepthStencilView;		//深度模板视图*/
+
 	ID3D11Texture2D*					mDepthStencilBuffer;		//深度模板缓冲区
 
 	VideoSettingConfig					mVideoSettingConfig;		//视频配置

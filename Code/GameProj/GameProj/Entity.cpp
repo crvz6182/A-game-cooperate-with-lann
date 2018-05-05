@@ -18,5 +18,5 @@ void Entity::AddComponents(ComponentMaskType mask)
 
 void Entity::RemoveComponents(ComponentMaskType mask)
 {
-	mComponentMask & (~mask);
+	mComponentMask &= (~mask);
 }

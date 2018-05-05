@@ -28,6 +28,13 @@ struct Point2D {
 		return *this;
 	}
 
+	const Point2D operator+(const Point2D& rhs)
+	{
+		Point2D tAns = *this;
+		tAns += rhs;
+		return tAns;
+	}
+
 	Point2D& operator*=(const Percent scale) 
 	{ 
 		x *= scale;
@@ -113,12 +120,12 @@ public:
 	//begin end 提供迭代器，用于for(auto :)式遍历
 	auto begin() const
 	{
-		return mVector.cbegin();
+		return mVector.begin();
 	}
 
 	auto end() const
 	{
-		return mVector.cend();
+		return mVector.end();
 	}
 private:
 	std::vector<T> mVector;
@@ -139,7 +146,7 @@ public:
 		mMap[key] = value;
 	}
 
-	auto& operator[](Index i)
+	auto& operator[](const TKey& i)
 	{
 		return mMap[i];
 	}
@@ -152,13 +159,18 @@ public:
 		}
 		return &(result->second);
 	}
+
+	auto begin()
+	{
+		return mMap.begin();
+	}
+
+	auto end()
+	{
+		return mMap.end();
+	}
 private:
 	std::map<TKey, TValue> mMap;
-};
-
-class Matrix3x3
-{
-private:
 };
 
 namespace Math 
@@ -208,3 +220,5 @@ public:
 private:
 	T _t[size];
 };
+
+using Matrix4x4 = DirectX::XMMATRIX;

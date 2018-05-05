@@ -147,12 +147,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Actor.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ComponentContainer.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="DirectApplicationBase.h" />
     <ClInclude Include="DirectUtility.h" />
     <ClInclude Include="ECSUtil.h" />
+    <ClInclude Include="EffectBase.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="FileIO.h" />
@@ -162,8 +163,12 @@
     <ClInclude Include="IStringPerformable.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="SpriteComponent.h" />
+    <ClInclude Include="SpriteSystem.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="System.h" />
+    <ClInclude Include="ThirdParty\DirectXTex\DDSTextureLoader.h" />
+    <ClInclude Include="ThirdParty\Effect11\d3dx11effect.h" />
     <ClInclude Include="ThirdParty\rapidjson\allocators.h" />
     <ClInclude Include="ThirdParty\rapidjson\cursorstreamwrapper.h" />
     <ClInclude Include="ThirdParty\rapidjson\document.h" />
@@ -210,11 +215,10 @@
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Actor.cpp" />
-    <ClCompile Include="Component.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="DirectApplicationBase.cpp" />
     <ClCompile Include="DirectUtility.cpp" />
+    <ClCompile Include="EffectBase.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="FileIO.cpp" />
@@ -223,8 +227,13 @@
     <ClCompile Include="HIDInput.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Math.cpp" />
+    <ClCompile Include="SpriteComponent.cpp" />
+    <ClCompile Include="SpriteSystem.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="System.cpp" />
+    <ClCompile Include="ThirdParty\DirectXTex\DDSTextureLoader.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="TimeFormatter.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="WindowApplicationBase.cpp" />
@@ -236,6 +245,17 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Timer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\Shader\Lights.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Resource\Shader\LookDown2DSprite.fx">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\Config\VideoSettings.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

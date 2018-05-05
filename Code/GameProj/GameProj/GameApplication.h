@@ -13,7 +13,7 @@ public:
 
 	virtual void Update(TimeSlotInSecond deltaSecond) override;
 
-	virtual void Draw() override;
+	//virtual void Draw() override;
 
 	virtual void OnResize() override;
 

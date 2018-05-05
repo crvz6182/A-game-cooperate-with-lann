@@ -1,16 +1,17 @@
 #include "stdafx.h"
 #include "DirectApplicationBase.h"
 
+using namespace D3DUtil;
 
 DirectApplicationBase::DirectApplicationBase(HINSTANCE hInstance):
 	WindowApplicationBase(hInstance),
 	mTimer(),
-	mDevice(nullptr),
-	mImmediateContext(nullptr),
-	mSwapChain(nullptr),
 	mMsaaQualityLevels(0),
-	mRenderTargetView(nullptr),
-	mDepthStencilView(nullptr),
+	/*gD3dDevice(nullptr),
+	gImmediateDeviceContext(nullptr),
+	gSwapChain(nullptr),
+	gRenderTargetView(nullptr),
+	gDepthStencilView(nullptr),*/
 	mDepthStencilBuffer(nullptr),
 	mVideoSettingConfig("Resource\\Config\\VideoSettings.json")
 {
@@ -19,30 +20,30 @@ DirectApplicationBase::DirectApplicationBase(HINSTANCE hInstance):
 
 DirectApplicationBase::~DirectApplicationBase()
 {
-	ReleaseCOM(mRenderTargetView);
-	ReleaseCOM(mDepthStencilView);
-	ReleaseCOM(mSwapChain);
+	ReleaseCOM(gRenderTargetView);
+	ReleaseCOM(gDepthStencilView);
+	ReleaseCOM(gSwapChain);
 
 	ReleaseCOM(mDepthStencilBuffer);
 
 
 	//复位所有默认设置
-	if (mImmediateContext) {
-		mImmediateContext->ClearState();
+	if (gImmediateDeviceContext) {
+		gImmediateDeviceContext->ClearState();
 	}
 
-	ReleaseCOM(mImmediateContext);
+	ReleaseCOM(gImmediateDeviceContext);
 
 #if defined (DEBUG) || (_DEBUG)
 	ID3D11Debug* d3dDebug = 0;
-	HRESULT hr = mDevice->QueryInterface(__uuidof(ID3D11Debug), reinterpret_cast<void**>(&d3dDebug));
+	HRESULT hr = gD3dDevice->QueryInterface(__uuidof(ID3D11Debug), reinterpret_cast<void**>(&d3dDebug));
 	if (SUCCEEDED(hr)) {
 		hr = d3dDebug->ReportLiveDeviceObjects(D3D11_RLDO_DETAIL);
 	}
 	ReleaseCOM(d3dDebug);
 #endif
 
-	ReleaseCOM(mDevice);
+	ReleaseCOM(gD3dDevice);
 }
 
 bool DirectApplicationBase::Initialize()
@@ -69,7 +70,6 @@ int DirectApplicationBase::RunApplication()
 		else {
 			mTimer.Tick();
 			Update(mTimer.GetDeltaTime());
-			Draw();
 		}
 	}
 	return (int)msg.wParam;
@@ -77,23 +77,23 @@ int DirectApplicationBase::RunApplication()
 
 void DirectApplicationBase::OnResize()
 {
-	assert(mImmediateContext);
-	assert(mDevice);
-	assert(mSwapChain);
+	assert(gImmediateDeviceContext);
+	assert(gD3dDevice);
+	assert(gSwapChain);
 
 	//释放成员变量持有的旧视图和缓冲区
 	//以新的窗体宽高重新创建
 
-	ReleaseCOM(mRenderTargetView);
-	ReleaseCOM(mDepthStencilView);
+	ReleaseCOM(gRenderTargetView);
+	ReleaseCOM(gDepthStencilView);
 	ReleaseCOM(mDepthStencilBuffer);
 
 	//重新缩放渲染对象视图
 
-	HR(mSwapChain->ResizeBuffers(1, (UINT)mVideoSettingConfig.GetResolution().Width, (UINT)mVideoSettingConfig.GetResolution().Height, DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH));
+	HR(gSwapChain->ResizeBuffers(1, (UINT)mVideoSettingConfig.GetResolution().Width, (UINT)mVideoSettingConfig.GetResolution().Height, DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH));
 	ID3D11Texture2D* backBuffer;
-	HR(mSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&backBuffer)));
-	HR(mDevice->CreateRenderTargetView(backBuffer, 0, &mRenderTargetView));
+	HR(gSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&backBuffer)));
+	HR(gD3dDevice->CreateRenderTargetView(backBuffer, 0, &gRenderTargetView));
 	ReleaseCOM(backBuffer);
 
 
@@ -123,23 +123,24 @@ void DirectApplicationBase::OnResize()
 	depthStencilDesc.CPUAccessFlags = 0;
 	depthStencilDesc.MiscFlags = 0;
 
-	HR(mDevice->CreateTexture2D(&depthStencilDesc, 0, &mDepthStencilBuffer));
-	HR(mDevice->CreateDepthStencilView(mDepthStencilBuffer, 0, &mDepthStencilView));
+	HR(gD3dDevice->CreateTexture2D(&depthStencilDesc, 0, &mDepthStencilBuffer));
+	HR(gD3dDevice->CreateDepthStencilView(mDepthStencilBuffer, 0, &gDepthStencilView));
 
 	//重新将新的渲染对象视图和深度模板视图绑定到流水线
-	mImmediateContext->OMSetRenderTargets(1, &mRenderTargetView, mDepthStencilView);
+	gImmediateDeviceContext->OMSetRenderTargets(1, &gRenderTargetView, gDepthStencilView);
 
 	//重新设定窗口视窗
 
 	D3D11_VIEWPORT screenViewPort;
 	screenViewPort.TopLeftX = 0;
 	screenViewPort.TopLeftY = 0;
-	screenViewPort.Width = static_cast<float>(mWindowSize.Width);
-	screenViewPort.Height = static_cast<float>(mWindowSize.Height);
+	screenViewPort.Width = static_cast<FLOAT>(mVideoSettingConfig.GetResolution().Width);
+	screenViewPort.Height = static_cast<FLOAT>(mVideoSettingConfig.GetResolution().Height);
 	screenViewPort.MinDepth = 0.0f;
 	screenViewPort.MaxDepth = 1.0f;
 
-	mImmediateContext->RSSetViewports(1, &screenViewPort);
+	gImmediateDeviceContext->RSSetViewports(1, &screenViewPort);
+
 }
 
 void DirectApplicationBase::Pause()
@@ -174,9 +175,9 @@ bool DirectApplicationBase::InitializeDirect()
 		createDeviceFlag,
 		0, 0,
 		D3D11_SDK_VERSION,
-		&mDevice,
+		&gD3dDevice,
 		&featureLevel,
-		&mImmediateContext
+		&gImmediateDeviceContext
 	);
 
 	if (FAILED(hr)) {
@@ -222,7 +223,7 @@ bool DirectApplicationBase::InitializeDirect()
 	//必须使用 被用来创建当前设备 的工厂 来创建相匹配的交换链
 	//否则设备与交换链不匹配
 	IDXGIDevice* dxgiDevice = nullptr;
-	HR(mDevice->QueryInterface(__uuidof(IDXGIDevice), (void**)&dxgiDevice));
+	HR(gD3dDevice->QueryInterface(__uuidof(IDXGIDevice), (void**)&dxgiDevice));
 
 	IDXGIAdapter* dxgiAdapter = nullptr;
 	HR(dxgiDevice->GetParent(__uuidof(IDXGIAdapter), (void**)&dxgiAdapter));
@@ -230,7 +231,7 @@ bool DirectApplicationBase::InitializeDirect()
 	IDXGIFactory* dxgiFactory = nullptr;
 	HR(dxgiAdapter->GetParent(__uuidof(IDXGIFactory), (void**)&dxgiFactory));
 
-	HR(dxgiFactory->CreateSwapChain(mDevice, &dxgiSwapChainDescription, &mSwapChain));
+	HR(dxgiFactory->CreateSwapChain(gD3dDevice, &dxgiSwapChainDescription, &gSwapChain));
 
 	ReleaseCOM(dxgiDevice);
 	ReleaseCOM(dxgiAdapter);
@@ -251,14 +252,14 @@ void DirectApplicationBase::QueryMsaaQualityLevel()
 	//检测4xMSAA支持的质量等级
 	//只要是支持D3D11的设备一定支持4xMSAA，
 	//因此只需要检测支持的质量等级即可
-	HR(mDevice->CheckMultisampleQualityLevels(
+	HR(gD3dDevice->CheckMultisampleQualityLevels(
 		DXGI_FORMAT_R8G8B8A8_UNORM, mVideoSettingConfig.GetAntiAliasLevel(), &mMsaaQualityLevels));
 	assert(mMsaaQualityLevels > 0);
 }
 
 void DirectApplicationBase::Windowize()
 {
-	if (!mDevice) {
+	if (!gD3dDevice) {
 		return;
 	}
 	WindowApplicationBase::Windowize();

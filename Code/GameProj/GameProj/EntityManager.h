@@ -1,5 +1,6 @@
 #pragma once
 #include "Entity.h"
+#include "ComponentContainer.h"
 
 class EntityManager
 {
@@ -12,7 +13,8 @@ public:
 	Index CreateNewEntity(ComponentMaskType mask);
 
 	Array<Entity>			entities;
-	Dictionary<Index, PositionComponent>		mPositionComponents;
-	Dictionary<Index, VelocityComponent>		mVelocityComponents;
-	Dictionary<Index, AppearanceComponent>	mAppearanceComponents;
+	ComponentContainer<PositionComponent>		mPositionComponents;
+	ComponentContainer<VelocityComponent>		mVelocityComponents;
+	ComponentContainer<AppearanceComponent>	mAppearanceComponents;
+	ComponentContainer<SpriteComponent>			mSpriteComponents;
 };

@@ -13,27 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="头文件\Math">
-      <UniqueIdentifier>{649453fb-b807-41f6-92b4-4cd09525dfa2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\Math">
-      <UniqueIdentifier>{8e3aad55-a943-4a31-9e21-6f2f23cab449}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\ThirdParty">
-      <UniqueIdentifier>{2d3cd7c9-7d96-4b40-9a39-2369474552b5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\ThirdParty\rapidjson">
-      <UniqueIdentifier>{e4cad2fb-4ab6-46ae-9ae3-e56dc5dd5ec0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\ThirdParty\rapidjson\error">
-      <UniqueIdentifier>{861c67ea-ee05-4fe6-b0f9-55287d0cd5bb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\ThirdParty\rapidjson\internal">
-      <UniqueIdentifier>{eaabb25b-009d-4c66-b811-cc0feff3b088}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\ThirdParty\rapidjson\msinttypes">
-      <UniqueIdentifier>{35e863d1-dd33-4835-898f-ecb46f9d6bb4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="源文件\Framework">
       <UniqueIdentifier>{8e769b08-08cd-402f-8c9a-57136d63de76}</UniqueIdentifier>
     </Filter>
@@ -64,18 +43,6 @@
     <Filter Include="头文件\Framework\GameWorld">
       <UniqueIdentifier>{4fa2917d-f58a-4483-9a69-c7736a73b401}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\Interfaces">
-      <UniqueIdentifier>{dbf8fae6-ee76-4f1c-8f48-830117829079}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\ThirdParty">
-      <UniqueIdentifier>{053c2fb2-50e2-4b67-a4dd-f92483712176}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\Framework\GameWorld\Objects">
-      <UniqueIdentifier>{a43934ba-0dcd-42cc-b2a1-87dd2a753451}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\Framework\GameWorld\Objects">
-      <UniqueIdentifier>{28c25eed-f26a-4fe2-b3d1-033c86df6624}</UniqueIdentifier>
-    </Filter>
     <Filter Include="头文件\Framework\FunctionalLibrary\Time">
       <UniqueIdentifier>{71a95aa7-a708-4e9c-98ab-98c6f63d7696}</UniqueIdentifier>
     </Filter>
@@ -87,6 +54,57 @@
     </Filter>
     <Filter Include="源文件\Framework\GameWorld\ECS">
       <UniqueIdentifier>{ff9e78ca-8d4d-4461-8338-a134545306d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Framework\GameWorld\ECS\Texture">
+      <UniqueIdentifier>{65a47a77-e15b-4131-8068-3dd7dc011039}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\GameWorld\ECS\Texture">
+      <UniqueIdentifier>{78de05f8-a71d-49bb-a569-37c30dca6215}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Game">
+      <UniqueIdentifier>{3a87cc79-bc7d-4faa-9456-d5d6a1b6ea9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Game">
+      <UniqueIdentifier>{15bb10d8-3f46-4f6e-b7dc-f88494275e37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\Interfaces">
+      <UniqueIdentifier>{dbf8fae6-ee76-4f1c-8f48-830117829079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\Math">
+      <UniqueIdentifier>{649453fb-b807-41f6-92b4-4cd09525dfa2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\ThirdParty">
+      <UniqueIdentifier>{2d3cd7c9-7d96-4b40-9a39-2369474552b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\ThirdParty\rapidjson">
+      <UniqueIdentifier>{e4cad2fb-4ab6-46ae-9ae3-e56dc5dd5ec0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\ThirdParty\rapidjson\error">
+      <UniqueIdentifier>{861c67ea-ee05-4fe6-b0f9-55287d0cd5bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\ThirdParty\rapidjson\internal">
+      <UniqueIdentifier>{eaabb25b-009d-4c66-b811-cc0feff3b088}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\ThirdParty\rapidjson\msinttypes">
+      <UniqueIdentifier>{35e863d1-dd33-4835-898f-ecb46f9d6bb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\ThirdParty\DirectXTex">
+      <UniqueIdentifier>{67870490-c27c-436c-85fe-446ac843805f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\ThirdParty\Effect">
+      <UniqueIdentifier>{619c061c-0300-4ba9-8338-7c6a716015fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Framework\Direct\Math">
+      <UniqueIdentifier>{8e3aad55-a943-4a31-9e21-6f2f23cab449}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\Resource">
+      <UniqueIdentifier>{63e39bd5-f08e-4019-8059-b139c40a19ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\Resource\Config">
+      <UniqueIdentifier>{ca42b8ff-811d-4d26-926c-dc56c75450fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Framework\Resource\Shader">
+      <UniqueIdentifier>{51eaaf2b-4b3b-4f61-8e2f-6a8f47171650}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -100,115 +118,115 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Math.h">
-      <Filter>头文件\Math</Filter>
+      <Filter>头文件\Framework\Math</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\allocators.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\cursorstreamwrapper.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\document.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\encodedstream.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\encodings.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\filereadstream.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\filewritestream.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\fwd.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\istreamwrapper.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\memorybuffer.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\memorystream.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\ostreamwrapper.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\pointer.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\prettywriter.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\rapidjson.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\reader.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\schema.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\stream.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\stringbuffer.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\writer.h">
-      <Filter>头文件\ThirdParty\rapidjson</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\error\en.h">
-      <Filter>头文件\ThirdParty\rapidjson\error</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\error</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\error\error.h">
-      <Filter>头文件\ThirdParty\rapidjson\error</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\error</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\internal\biginteger.h">
-      <Filter>头文件\ThirdParty\rapidjson\internal</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\internal</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\internal\diyfp.h">
-      <Filter>头文件\ThirdParty\rapidjson\internal</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\internal</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\internal\dtoa.h">
-      <Filter>头文件\ThirdParty\rapidjson\internal</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\internal</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\internal\ieee754.h">
-      <Filter>头文件\ThirdParty\rapidjson\internal</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\internal</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\internal\itoa.h">
-      <Filter>头文件\ThirdParty\rapidjson\internal</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\internal</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\internal\meta.h">
-      <Filter>头文件\ThirdParty\rapidjson\internal</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\internal</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\internal\pow10.h">
-      <Filter>头文件\ThirdParty\rapidjson\internal</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\internal</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\internal\regex.h">
-      <Filter>头文件\ThirdParty\rapidjson\internal</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\internal</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\internal\stack.h">
-      <Filter>头文件\ThirdParty\rapidjson\internal</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\internal</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\internal\strfunc.h">
-      <Filter>头文件\ThirdParty\rapidjson\internal</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\internal</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\internal\strtod.h">
-      <Filter>头文件\ThirdParty\rapidjson\internal</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\internal</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\internal\swap.h">
-      <Filter>头文件\ThirdParty\rapidjson\internal</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\internal</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\msinttypes\inttypes.h">
-      <Filter>头文件\ThirdParty\rapidjson\msinttypes</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\msinttypes</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\rapidjson\msinttypes\stdint.h">
-      <Filter>头文件\ThirdParty\rapidjson\msinttypes</Filter>
+      <Filter>头文件\Framework\ThirdParty\rapidjson\msinttypes</Filter>
     </ClInclude>
     <ClInclude Include="WindowApplicationBase.h">
       <Filter>头文件\Framework\Win</Filter>
@@ -232,16 +250,10 @@
       <Filter>头文件\Framework\GameWorld</Filter>
     </ClInclude>
     <ClInclude Include="IStringPerformable.h">
-      <Filter>头文件\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="GameApplication.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Actor.h">
-      <Filter>头文件\Framework\GameWorld\Objects</Filter>
+      <Filter>头文件\Framework\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
-      <Filter>头文件\Math</Filter>
+      <Filter>头文件\Framework\Math</Filter>
     </ClInclude>
     <ClInclude Include="Config.h">
       <Filter>头文件\Framework\FunctionalLibrary</Filter>
@@ -273,6 +285,27 @@
     <ClInclude Include="ECSUtil.h">
       <Filter>头文件\Framework\GameWorld\ECS</Filter>
     </ClInclude>
+    <ClInclude Include="ThirdParty\DirectXTex\DDSTextureLoader.h">
+      <Filter>头文件\Framework\ThirdParty\DirectXTex</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
+      <Filter>头文件\Framework\GameWorld\ECS\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentContainer.h">
+      <Filter>头文件\Framework\GameWorld\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteSystem.h">
+      <Filter>头文件\Framework\GameWorld\ECS\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\Effect11\d3dx11effect.h">
+      <Filter>头文件\Framework\ThirdParty\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectBase.h">
+      <Filter>头文件\Framework\Direct</Filter>
+    </ClInclude>
+    <ClInclude Include="GameApplication.h">
+      <Filter>头文件\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -282,7 +315,7 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Math.cpp">
-      <Filter>源文件\Math</Filter>
+      <Filter>源文件\Framework\Direct\Math</Filter>
     </ClCompile>
     <ClCompile Include="WindowApplicationBase.cpp">
       <Filter>源文件\Framework\Win</Filter>
@@ -305,14 +338,8 @@
     <ClCompile Include="GameWorld.cpp">
       <Filter>源文件\Framework\GameWorld</Filter>
     </ClCompile>
-    <ClCompile Include="GameApplication.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>源文件\Framework\GameWorld\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="Transform.cpp">
-      <Filter>源文件\Math</Filter>
+      <Filter>源文件\Framework\Direct\Math</Filter>
     </ClCompile>
     <ClCompile Include="Config.cpp">
       <Filter>源文件\Framework\FunctionalLibrary</Filter>
@@ -326,9 +353,6 @@
     <ClCompile Include="Log.cpp">
       <Filter>源文件\Framework\FunctionalLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>源文件\Framework\GameWorld\ECS</Filter>
-    </ClCompile>
     <ClCompile Include="System.cpp">
       <Filter>源文件\Framework\GameWorld\ECS</Filter>
     </ClCompile>
@@ -338,5 +362,31 @@
     <ClCompile Include="EntityManager.cpp">
       <Filter>源文件\Framework\GameWorld\ECS</Filter>
     </ClCompile>
+    <ClCompile Include="ThirdParty\DirectXTex\DDSTextureLoader.cpp">
+      <Filter>头文件\Framework\ThirdParty\DirectXTex</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteComponent.cpp">
+      <Filter>源文件\Framework\GameWorld\ECS\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectBase.cpp">
+      <Filter>源文件\Framework\Direct</Filter>
+    </ClCompile>
+    <ClCompile Include="GameApplication.cpp">
+      <Filter>源文件\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteSystem.cpp">
+      <Filter>源文件\Framework\GameWorld\ECS\Texture</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\Config\VideoSettings.json">
+      <Filter>头文件\Framework\Resource\Config</Filter>
+    </None>
+    <None Include="Resource\Shader\LookDown2DSprite.fx">
+      <Filter>头文件\Framework\Resource\Shader</Filter>
+    </None>
+    <None Include="Resource\Shader\Lights.fx">
+      <Filter>头文件\Framework\Resource\Shader</Filter>
+    </None>
   </ItemGroup>
 </Project>

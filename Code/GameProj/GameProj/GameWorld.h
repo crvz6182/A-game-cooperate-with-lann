@@ -3,6 +3,7 @@
 #include "HIDInput.h"
 #include "Entity.h"
 #include "System.h"
+#include "SpriteSystem.h"
 
 class GameWorld
 {
@@ -22,6 +23,6 @@ private:
 	EntityManager								mEntityManager;
 
 	MovementSystem						mMovementSystem;
-
+	SpriteSystem								mSpriteSystem;
 };
 

@@ -10,10 +10,11 @@ namespace ECSUtil
 	//组件类型
 	enum ComponentType
 	{
-		Component_None = 0,
-		Component_Position = 1 << 0,
-		Component_Velocity = 1 << 1,
-		Component_Appearance = 1 << 2
+		Component_None					= 0,
+		Component_Position				= 1 << 0,
+		Component_Velocity				= 1 << 1,
+		Component_Appearance		= 1 << 2,
+		Component_Sprite					= 1 << 3
 	};
 
 	//由于模板函数不可以偏特化
@@ -44,4 +45,5 @@ namespace ECSUtil
 	{
 		return ECSUtilLib<FirstComponent, RestComponent...>::GetMaskType();
 	}
+
 }

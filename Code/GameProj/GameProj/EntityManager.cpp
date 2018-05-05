@@ -3,7 +3,8 @@
 
 EntityManager::EntityManager()
 {
-	auto ind = CreateNewEntity(ComponentType::Component_Position | ComponentType::Component_Velocity | ComponentType::Component_Appearance);
+	auto ind = CreateNewEntity(ComponentType::Component_Position | ComponentType::Component_Velocity | ComponentType::Component_Appearance | ComponentType::Component_Sprite);
+	mSpriteComponents[ind] = SpriteFactory::CreateSprite("testman");
 
 }
 

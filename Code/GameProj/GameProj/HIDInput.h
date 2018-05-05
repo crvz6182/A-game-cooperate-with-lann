@@ -1,9 +1,8 @@
 #pragma once
 #include "DirectUtility.h"
 #include <functional>
-#include "Actor.h"
 
-#define BindAction(str, state, func) BindActionBehaviour(str, state, std::bind(func, this))
+//#define BindAction(str, state, func) BindActionBehaviour(str, state, std::bind(func, this))
 
 constexpr UINT KEYBOARD_SIZE = 256;
 
